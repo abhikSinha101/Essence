@@ -1,6 +1,12 @@
 "use client";
 import { inter } from "@/app/fonts/fonts";
 import { sidebarMediaLinks, sidebarDocLinks } from "@/constants";
+import {
+  OrganizationSwitcher,
+  SignOutButton,
+  SignedIn,
+  UserButton,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -10,19 +16,29 @@ function LeftSidebar() {
   const pathname = usePathname();
   return (
     <section className="custom-scrollbar leftsidebar">
-      <div className="flex items-center p-4 gap-24 max-lg:hidden">
+      <div className="flex items-center p-4 gap-24 max-lg:hidden place-content-center">
         <Link href="/">
-          <p className="text-heading3-bold text-dark-1 ">Essence</p>
+          <Image
+            src="./Essencelogo.svg"
+            alt="essencelogo"
+            width={112}
+            height={112}
+            className="p-1"
+          />
         </Link>
         <Link href="/">
-          <Image src="/assets/slide.png" alt="slide" width={24} height={24} />
+          <Image
+            src="/assets/slide.png"
+            alt="slide"
+            width={24}
+            height={24}
+            className="pt-1"
+          />
         </Link>
       </div>
 
       <div className="flex w-full flex-1 flex-col gap-1 pl-4 pr-4">
-        <p className="text-dark-3 text-subtle-medium max-lg:hidden pt-2 pb-2 ">
-          Main Menu
-        </p>
+        <p className="leftsidebar_section-text">Main Menu</p>
 
         {sidebarMediaLinks.map((link) => {
           const isActive =
@@ -35,7 +51,7 @@ function LeftSidebar() {
               key={link.label}
               className={`leftsidebar_link ${
                 isActive && "bg-light-2 items-center"
-              }`}
+              } `}
             >
               <Image
                 src={link.imgURL}
@@ -48,9 +64,7 @@ function LeftSidebar() {
           );
         })}
 
-        <p className="text-dark-3 text-subtle-medium max-lg:hidden pt-6">
-          Favorites
-        </p>
+        <p className="leftsidebar_section-text">Favorites</p>
 
         {/**Looping for links */}
 
@@ -59,9 +73,10 @@ function LeftSidebar() {
             <Link
               href={link.route}
               key={link.label}
-              className="leftsidebar_link  hover:bg-light-2"
+              className="leftsidebar_link "
               id="sidebarlinks"
             >
+              {/** hover:bg-light-2 */}
               <Image
                 src={link.imgURL}
                 alt={link.label}
@@ -78,6 +93,36 @@ function LeftSidebar() {
         <div className="text-dark-3 text-base-regular  max-lg:hidden pt-2 pb-2">
           Add more Favorites
         </div>
+      </div>
+
+      <div className="leftsidebar_profile">
+        <div className="flex flex-row items-center gap-4">
+          <SignedIn>
+            <SignOutButton signOutCallback={() => router.push("/sign-in")}>
+              <div className="flex cursor-pointer">
+                <Image
+                  src="/assets/pen.svg"
+                  alt="logout"
+                  width={24}
+                  height={24}
+                />
+              </div>
+            </SignOutButton>
+          </SignedIn>
+          <div className="flex flex-col gap-0">
+            <p className="text-dark-1 text-small-regular">UserName</p>
+            <p className="text-dark-3 text-subtle-medium">BOM</p>
+          </div>
+        </div>
+
+        <Link href="">
+          <Image
+            src="/assets/moon.svg"
+            alt="theme icon"
+            width={24}
+            height={24}
+          />
+        </Link>
       </div>
     </section>
   );

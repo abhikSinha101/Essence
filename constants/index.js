@@ -36,16 +36,13 @@ export const sidebarMediaLinks = [
       route:"/technical-docs",
       label:"Technical Docs"
     },
-    
     {
       imgURL:"/assets/camera.svg",
       route:"/onboardings",
-      label:"Onboardings"
-    },
-    
+      label:"Onboardings",
+      leftIcon:"/assets/arrow-down.svg"
+    },    
   ];
-
-
 
   
   export const profileTabs = [
