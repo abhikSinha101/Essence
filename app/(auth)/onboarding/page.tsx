@@ -21,7 +21,7 @@ async function Page() {
       <p className="mt-3 text-base-regular text-dark-1">
         Complete your profile to start using Essence.
       </p>
-      <section className="mt-9 bg-light-2 p-10">
+      <section className="mt-9 bg-light-1 border border-light-3 rounded-2xl p-10">
         <AccountProfile user={userData} btnTitle="Continue" />
       </section>
     </main>
