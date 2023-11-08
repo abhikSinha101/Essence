@@ -17,7 +17,7 @@ function LeftSidebar() {
   return (
     <section className="custom-scrollbar leftsidebar">
       <div className="flex items-center p-4 gap-24 max-lg:hidden place-content-center">
-        <Link href="/">
+        <Link href="/main">
           <Image
             src="./Essencelogo.svg"
             alt="essencelogo"

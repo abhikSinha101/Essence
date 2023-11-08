@@ -1,44 +1,44 @@
 export const sidebarMediaLinks = [
     {
       imgURL: "/assets/home.svg",
-      route: "/",
+      route: "/main",
       label: "Dashboard",
     },
     {
       imgURL: "/assets/compaigns.svg",
-      route: "/campaigns",
+      route: "/main/campaigns",
       label: "Campaigns",
     },
     {
       imgURL: "/assets/message.svg",
-      route: "/message",
+      route: "/main/message",
       label: "Messages",
     },
     {
       imgURL: "/assets/money.svg",
-      route: "/leads",
+      route: "/main/leads",
       label: "Leads",
     },
     {
       imgURL: "/assets/folder.svg",
-      route: "/archive",
+      route: "/main/archive",
       label: "Archive",
     },
     {
       imgURL: "/assets/help.svg",
-      route: "/support-center",
+      route: "/main/support-center",
       label: "Support Center",
     },
   ];
   export const sidebarDocLinks = [
     {
       imgURL:"/assets/document.svg",
-      route:"/technical-docs",
+      route:"/main/technical-docs",
       label:"Technical Docs"
     },
     {
       imgURL:"/assets/camera.svg",
-      route:"/onboardings",
+      route:"/main/onboardings",
       label:"Onboardings",
       leftIcon:"/assets/arrow-down.svg"
     },    
