@@ -17,9 +17,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <section className="landing-page">
-            <div className="w-full"> {children}</div>
-          </section>
+          <section className="w-full">{children}</section>
         </body>
       </html>
     </ClerkProvider>

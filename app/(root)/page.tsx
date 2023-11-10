@@ -1,20 +1,15 @@
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import ThreeScene from "./ThreeScene";
 
-export default function Home() {
+const Home = () => {
   return (
-    <>
-      <h1 className="head-text text-left">Essence Landing Page</h1>
-      <Link href="/main">
-        <Image
-          src="./Essencelogo.svg"
-          alt="essencelogo"
-          width={112}
-          height={112}
-          className="p-1"
-        />
-      </Link>
-    </>
+    <main className="flex flex-col items-center justify-center">
+      <ThreeScene />
+      {/* Other elements */}
+    </main>
   );
-}
+};
+
+export default Home;
