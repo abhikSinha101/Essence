@@ -17,7 +17,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <section className="w-full">{children}</section>
+          <section className=" flex flex-col w-full">{children}</section>
         </body>
       </html>
     </ClerkProvider>

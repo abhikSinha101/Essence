@@ -1,15 +1,15 @@
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import ThreeScene from "./ThreeScene";
+import LandingPage from "@/components/landing-page/LandingPage";
 
 const Home = () => {
   return (
-    <main className="flex flex-col items-center justify-center">
-      <ThreeScene />
-      {/* Other elements */}
-    </main>
+    <section className="flex flex-col items-center justify-center">
+      <LandingPage />
+    </section>
   );
+  //TODO figure something for gradient animation
 };
 
 export default Home;

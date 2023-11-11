@@ -189,7 +189,12 @@ module.exports = {
         "gray-1": "#C5C5C5",
         "purple-1": "#F5EFDA",
         "yellow-1": "#E8DAF5",
-        glassmorphism: "rgba(16, 16, 18, 0.60)",
+
+        "gradientColorZero": "#a960ee",
+        "gradientColorOne": "#ff333d",
+        "gradientColorTwo" : "#90e0ff",
+        "gradientColorThree": "#ffcb57",
+
       },
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
