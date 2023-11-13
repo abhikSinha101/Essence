@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    
     webpack: (config, options) => {
       config.module.rules.push({
-        test: /\.glsl/,
-        type: "asset/source",
+        test: /\.(glsl|frag|vert)$/,
+      use: ['raw-loader'],
       })
       return config
     },

@@ -5,8 +5,9 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Box from "./Box";
+import ThreeScene from "@/components/landing-page/ThreeScene";
 
-function LandingPage() {
+export default function LandingPage() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   useEffect(() => {
     if (canvasRef.current && typeof window !== "undefined") {
@@ -46,7 +47,6 @@ function LandingPage() {
           </div>
         </Link>
       </div>
-
       <Box />
       <Canvas ref={canvasRef} id="canv" className="canvas-container">
         <ambientLight intensity={2} />
@@ -54,5 +54,4 @@ function LandingPage() {
     </div>
   );
 }
-
-export default LandingPage;
+//try making a camera and scene

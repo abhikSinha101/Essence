@@ -1,29 +1,38 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
+
+// Import your shaders using require
+import vertexShader from "!!raw-loader!../shaders/vertex.glsl";
+import fragmentShader from "!!raw-loader!../shaders/fragment.glsl";
 
 function Box(props: any) {
   // This reference gives us direct access to the THREE.Mesh object.
   const meshRef = useRef<Mesh>();
 
-  // Hold state for hovered and clicked events.
-  const [hovered, setHover] = useState(false);
-  const [clicked, setClick] = useState(false);
+  const uniforms = useMemo(
+    () => ({
+      time: { value: 1.0 },
+      wireframeThickness: { value: 0.2 },
+    }),
+    []
+  );
 
-  // Subscribe this component to the render-loop and rotate the mesh every frame.
   useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += delta;
-      meshRef.current.rotation.y += delta;
+      uniforms.time.value += delta;
     }
   });
 
   // Return the view.
-  // These are regular three.js elements expressed in JSX.
   return (
-    <mesh {...props} ref={meshRef} scale={clicked ? 1.5 : 1}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+    <mesh {...props} ref={meshRef} scale={1}>
+      <planeGeometry args={[10, 8, 100, 100]} />
+      <shaderMaterial
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={uniforms}
+      />
     </mesh>
   );
 }
@@ -43,12 +52,16 @@ export default function App() {
     }
   }, []);
   return (
-    <Canvas ref={canvasRef} id="canv" className="canvas-container">
+    <Canvas ref={canvasRef} id="canv" className="canvas-container" shadows>
       <color attach="background" args={["#fff"]} />
-      <ambientLight intensity={4} />
-
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
+      <ambientLight intensity={0.5} />
+      <directionalLight
+        position={[10, 10, 10]}
+        castShadow
+        shadow-mapSize={[2024, 2024]}
+      />
+      <pointLight position={[10, 0, 0]} />
+      <Box position={[0, 0, 0]} />
     </Canvas>
   );
 }

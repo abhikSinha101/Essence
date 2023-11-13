@@ -1,14 +1,11 @@
+uniform float wireframeThickness;
 uniform float time;
-varying vec2 vUv;
-varying vec3 vPosition;
-varying vec3 vColor;
+varying vec2 vertexUV;
+varying vec3 vertexPosition;
+varying vec3 vertexColor;
 uniform vec2 pixels;
-uniform vec2 PI = 3.14159265359;
-attribute vec4 a_position;
+varying vec3 vertexNormal;
 
-//	Simplex 3D Noise 
-//	by Ian McEwan, Ashima Arts
-//
 vec4 permute(vec4 x) {
   return mod(((x * 34.0) + 1.0) * x, 289.0);
 }
@@ -82,8 +79,25 @@ float snoise(vec3 v) {
 }
 
 void main() {
+//vertex
+  vertexColor = vec3(0.5);
 
-  vUv = uv;
+  vec2 noiseCoord = uv * vec2(3., 4.);
 
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(postion, 1.0);
+  float tilt = -0.6 * uv.y;
+
+  float incline = uv.x * 0.1;
+
+  float offset = incline * mix(-0.25, 0.25, uv.y);
+
+  float noise = snoise(vec3(noiseCoord.x + time * 0.25, noiseCoord.y, time * 0.25));
+
+  noise = max(0., noise);
+
+  vec3 pos = vec3(position.x, position.y, position.z + noise * 1.3 + tilt + incline + offset);
+
+  //color
+
+  vertexUV = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }
