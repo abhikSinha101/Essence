@@ -79,24 +79,48 @@ float snoise(vec3 v) {
 }
 
 void main() {
-//vertex
-  vertexColor = vec3(0.5);
 
+  vec3 colors[6];
+  colors[0] = vec3(1, 0.2, 0.2);    // Red
+  colors[1] = vec3(0.60, 0.25, 1);  // Purple
+  colors[2] = vec3(0.55, 0.89, 1.0); // Cyan
+  colors[3] = vec3(1.0, 0.85, 0.30); // Orange
+  colors[4] = vec3(0.26, 0.97, 0.64); // Green
+  colors[5] = vec3(0.97, 0.26, 0.55); // Red-pink
+
+//vertex
   vec2 noiseCoord = uv * vec2(3., 4.);
 
-  float tilt = -0.6 * uv.y;
+  float tilt = -0.9 * uv.y;
 
-  float incline = uv.x * 0.1;
+  float incline = uv.x * 0.5;
 
   float offset = incline * mix(-0.25, 0.25, uv.y);
 
-  float noise = snoise(vec3(noiseCoord.x + time * 0.25, noiseCoord.y, time * 0.25));
+  float noise = snoise(vec3(noiseCoord.x + time * 0.1, noiseCoord.y, time * 0.2));
 
   noise = max(0., noise);
 
-  vec3 pos = vec3(position.x, position.y, position.z + noise * 1.3 + tilt + incline + offset);
+  vec3 pos = vec3(position.x, position.y, position.z + noise * 1.8 + tilt + incline + offset);
 
   //color
+  vertexColor = vec3(0.8, 0.62, 1.0);
+
+  for(int i = 0; i < 6; i++) {
+
+    float noiseFlow = 7. + float(i) * 0.4;
+    float noiseSpeed = 8. + float(i) * 0.4;
+    float noiseSeed = 1. + float(i) * 12.;
+    vec2 noiseFreq = vec2(0.7, 0.9) * 0.3;
+
+    float noiseFloor = 0.1;
+    float noiseCeil = 0.6 + float(i) * 0.09;
+
+    float noise = smoothstep(noiseFloor, noiseCeil, snoise(vec3(noiseCoord.x * noiseFreq.x + time * noiseFlow, noiseCoord.y * noiseFreq.y, time * noiseSpeed + noiseSeed)));
+
+    //vertexColor = mix(vec3(0.50, 0.15, 1), colors[i], noise);
+    vertexColor = mix(vertexColor, colors[i], noise);
+  }
 
   vertexUV = uv;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);

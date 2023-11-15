@@ -20,14 +20,14 @@ function Box(props: any) {
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      uniforms.time.value += delta;
+      uniforms.time.value += delta / 200;
     }
   });
 
   // Return the view.
   return (
     <mesh {...props} ref={meshRef} scale={1}>
-      <planeGeometry args={[10, 8, 100, 100]} />
+      <planeGeometry args={[20, 20, 150, 150]} />
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
