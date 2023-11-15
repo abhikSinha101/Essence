@@ -195,6 +195,8 @@ module.exports = {
         "gradientColorTwo" : "#90e0ff",
         "gradientColorThree": "#ffcb57",
 
+        glassmorphism:"rgba(255, 255, 255,0.25)",
+
       },
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",

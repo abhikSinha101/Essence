@@ -97,11 +97,11 @@ void main() {
 
   float offset = incline * mix(-0.25, 0.25, uv.y);
 
-  float noise = snoise(vec3(noiseCoord.x + time * 0.1, noiseCoord.y, time * 0.2));
+  float noise = snoise(vec3(noiseCoord.x + time * 4., noiseCoord.y, time * 5.));
 
   noise = max(0., noise);
 
-  vec3 pos = vec3(position.x, position.y, position.z + noise * 1.8 + tilt + incline + offset);
+  vec3 pos = vec3(position.x, position.y, position.z + noise * 2.4 + tilt + incline + offset);
 
   //color
   vertexColor = vec3(0.8, 0.62, 1.0);
@@ -111,7 +111,7 @@ void main() {
     float noiseFlow = 7. + float(i) * 0.4;
     float noiseSpeed = 8. + float(i) * 0.4;
     float noiseSeed = 1. + float(i) * 12.;
-    vec2 noiseFreq = vec2(0.7, 0.9) * 0.3;
+    vec2 noiseFreq = vec2(0.65, 0.8) * 0.6;
 
     float noiseFloor = 0.1;
     float noiseCeil = 0.6 + float(i) * 0.09;
