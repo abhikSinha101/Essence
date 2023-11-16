@@ -68,7 +68,7 @@
   }
 
   .topbar {
-    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-glassmorphism;
+    @apply top-0 flex w-full items-center justify-between bg-glassmorphism;
   }
 
   .bottombar {
@@ -129,7 +129,26 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #0000f8;
+    background: #8b8bff;
+  }
+
+  .custom-scrollbar_lp::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar_lp::-webkit-scrollbar-track {
+    background: rgb(70, 70, 70);
+  }
+
+  .custom-scrollbar_lp::-webkit-scrollbar-thumb {
+    background: rgb(233, 27, 130);
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar_lp::-webkit-scrollbar-thumb:hover {
+    background: #8b8bff;
   }
 }
 

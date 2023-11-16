@@ -61,7 +61,6 @@ export default function App({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  //TODO make gradient responsive
   return (
     <>
       <div>{children}</div>
