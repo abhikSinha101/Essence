@@ -16,7 +16,7 @@ function LeftSidebar() {
   const pathname = usePathname();
   return (
     <section className="custom-scrollbar leftsidebar">
-      <div className="flex items-center p-4 gap-24 max-lg:hidden place-content-center">
+      <div className="flex items-center p-4 gap-20 max-lg:hidden place-content-center">
         <Link href="/main">
           <Image
             src="./Essencelogo.svg"
@@ -24,6 +24,7 @@ function LeftSidebar() {
             width={112}
             height={112}
             className="p-1"
+            priority
           />
         </Link>
         <Link href="/">
@@ -33,6 +34,7 @@ function LeftSidebar() {
             width={24}
             height={24}
             className="pt-1"
+            priority
           />
         </Link>
       </div>

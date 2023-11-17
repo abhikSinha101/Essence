@@ -1,98 +1,41 @@
-"use client";
 import Gradient from "./Gradient";
 import Image from "next/image";
 import Link from "next/link";
+import HeroTopbar from "../shared/HeroTopbar";
+import HeroContent from "../shared/HeroContent";
 
 const LandingPage = () => {
   return (
     <Gradient>
-      <section className="absolute w-full flex flex-col gap-20 z-30 max-h-full overflow-y-auto custom-scrollbar_lp">
-        <div className="topbar">
-          <div className="flex items-center p-2 gap-24 max-lg:hidden place-content-center">
-            <Link href="/main">
+      <section className="hero_page custom-scrollbar_lp">
+        <section className="flex flex-col items-center gap-64 mt-8 pb-16">
+          <HeroTopbar />
+          <HeroContent />
+        </section>
+
+        <section className="flex flex-col items-center gap-12 mt-8 mb-16">
+          <div className="hero_card">
+            <div className="flex flex-col items-center w-full justify-between">
               <Image
-                src="./Essencelogo.svg"
-                alt="essencelogo"
-                width={112}
-                height={112}
-                className="p-1"
-                priority
+                src="./assets/Hero-SubText.svg"
+                width={256}
+                height={256}
+                alt="subtext"
+                className="w-full"
               />
-            </Link>
+              <Link
+                href="/"
+                className="rounded-3xl py-2 px-3 justify-start bg-purple-1"
+              >
+                <p>Connect</p>
+              </Link>
+            </div>
+
+            <div className="flex flex-col w-full h-full">
+              ESSENCE BUILD TO CONNECT
+            </div>
           </div>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
-        <div className="flex items-center p-2 gap-24  place-content-center">
-          <Link href="/main">
-            <Image
-              src="./Essencelogo.svg"
-              alt="essencelogo"
-              width={112}
-              height={112}
-              className="p-1"
-              priority
-            />
-          </Link>
-        </div>
+        </section>
       </section>
     </Gradient>
   );

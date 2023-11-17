@@ -43,6 +43,18 @@ export const sidebarMediaLinks = [
       leftIcon:"/assets/arrow-down.svg"
     },    
   ];
+  export const ContentSideBarLinks = [
+    {
+      imgURL:"/assets/folder.svg",
+      route:"/main/channels",
+      label:"Channels"
+    },
+    {
+      imgURL:"/assets/photo.svg",
+      route:"/main/files",
+      label:"Files & Media",
+    },    
+  ];
 
   
   export const profileTabs = [

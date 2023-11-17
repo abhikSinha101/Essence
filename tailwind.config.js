@@ -187,7 +187,7 @@ module.exports = {
         "light-2": "#F4F4F4",
         "light-3": "#B3B3B3",
         "gray-1": "#C5C5C5",
-        "purple-1": "#F5EFDA",
+        "purple-1": "#a960ee",
         "yellow-1": "#E8DAF5",
 
         "gradientColorZero": "#a960ee",
@@ -196,6 +196,7 @@ module.exports = {
         "gradientColorThree": "#ffcb57",
 
         glassmorphism:"rgba(255, 255, 255,0.25)",
+        glassmorphism_display:"rgba(255, 255, 255,0.35)",
 
       },
       boxShadow: {

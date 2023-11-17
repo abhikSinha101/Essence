@@ -93,7 +93,7 @@ void main() {
 
   float tilt = -0.9 * uv.y;
 
-  float incline = uv.x * 0.5;
+  float incline = uv.x * 0.9;
 
   float offset = incline * mix(-0.25, 0.25, uv.y);
 
@@ -101,7 +101,7 @@ void main() {
 
   noise = max(0., noise);
 
-  vec3 pos = vec3(position.x, position.y, position.z + noise * 2.4 + tilt + incline + offset);
+  vec3 pos = vec3(position.x, position.y, position.z + noise * 3.4 + tilt + incline + offset);
 
   //color
   vertexColor = vec3(0.8, 0.62, 1.0);

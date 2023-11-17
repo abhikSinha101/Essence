@@ -5,7 +5,15 @@
 @layer components {
   /* main */
   .main-container {
-    @apply flex min-h-screen flex-1 flex-col items-center bg-light-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
+    @apply flex w-full  flex-col m-4 p-4 custom-scrollbar_hidden rounded-3xl border border-light-3 items-center bg-light-1 max-md:pb-32;
+  }
+
+  .hero_page {
+    @apply absolute px-24 w-full flex flex-col gap-20 z-30 max-h-full overflow-y-auto;
+  }
+
+  .hero_card {
+    @apply rounded-lg flex flex-row p-8 w-full items-center gap-16 justify-between bg-glassmorphism_display;
   }
 
   .canvas-container {
@@ -68,7 +76,7 @@
   }
 
   .topbar {
-    @apply top-0 flex w-full items-center justify-between bg-glassmorphism;
+    @apply top-0 z-20 flex px-4 h-16 w-[100%] items-center rounded-lg justify-between bg-glassmorphism max-lg:hidden;
   }
 
   .bottombar {
@@ -86,7 +94,9 @@
   .leftsidebar {
     @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-light-3 bg-light-1  max-md:hidden;
   }
-
+  .contentsidebar {
+    @apply sticky left-0 top-0 z-20 flex overflow-y-auto  h-full  w-[30%] flex-col justify-between overflow-auto bg-light-1  max-md:hidden;
+  }
   .leftsidebar_link {
     @apply relative flex justify-start gap-2 rounded-lg p-2;
   }
@@ -143,12 +153,21 @@
   }
 
   .custom-scrollbar_lp::-webkit-scrollbar-thumb {
-    background: rgb(233, 27, 130);
+    background: rgb(158, 27, 233);
     border-radius: 50px;
   }
 
   .custom-scrollbar_lp::-webkit-scrollbar-thumb:hover {
-    background: #8b8bff;
+    background: #b03aff;
+  }
+
+  .custom-scrollbar_hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-scrollbar_hidden {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 

@@ -1,7 +1,8 @@
+"use client";
+
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
-import { Html } from "@react-three/drei";
 
 // Import your shaders using require
 import vertexShader from "!!raw-loader!../shaders/vertex.glsl";

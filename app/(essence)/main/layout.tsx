@@ -7,6 +7,7 @@ import Topbar from "@/components/shared/Topbar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import Bottombar from "@/components/shared/Bottombar";
+import ContentSideBar from "@/components/shared/ContentSideBar";
 
 export const metadata: Metadata = {
   title: "Essence",
@@ -26,8 +27,15 @@ export default function RootLayout({
           <main className="flex flex-row">
             <LeftSidebar />
 
-            <section className="main-container">
-              <div className="w-full max-w-4xl"> {children}</div>
+            <section className="flex flex-1 flex-col max-h-screen">
+              <Topbar />
+              <section className="flex flex-1 flex-row h-[80%]">
+                <ContentSideBar />
+
+                <section className="main-container overflow-auto">
+                  <div className="w-full max-w-4xl">{children}</div>
+                </section>
+              </section>
             </section>
 
             <RightSidebar />
@@ -39,3 +47,4 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
+/** */
