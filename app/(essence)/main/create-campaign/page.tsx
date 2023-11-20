@@ -1,4 +1,4 @@
-import Campaigns from "@/components/forms/Campaigns";
+import PostCampaigns from "@/components/forms/PostCampaigns";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
@@ -13,8 +13,7 @@ async function Page() {
 
   return (
     <>
-      <h1>Campaigns</h1>
-      <Campaigns userId={userInfo._id} />
+      <PostCampaigns userId={userInfo._id} />
     </>
   );
 }

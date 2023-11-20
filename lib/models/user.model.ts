@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, require: true },
   image: { type: String },
   bio: { type: String },
-  threads: [{ type: mongoose.Schema.Types.ObjectId, ref: "Thread" }],
+  campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: "Campaign" }],
   onBoarded: {
     type: Boolean,
     default: false,
@@ -16,5 +16,3 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;
-
-/**communities: [{ type: mongoose.Schema.Types.ObjectId, ref: "community" }],*/

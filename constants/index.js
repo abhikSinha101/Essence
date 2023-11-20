@@ -6,7 +6,7 @@ export const sidebarMediaLinks = [
     },
     {
       imgURL: "/assets/compaigns.svg",
-      route: "/main/campaigns",
+      route: "/main/create-campaign",
       label: "Campaigns",
     },
     {

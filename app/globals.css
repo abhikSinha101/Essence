@@ -51,7 +51,7 @@
 
   /* thread card  */
   .thread-card_bar {
-    @apply relative mt-2 w-0.5 grow rounded-full bg-neutral-800;
+    @apply relative mt-4  w-0.5 grow rounded-full bg-neutral-800;
   }
 
   /* User card */
@@ -206,7 +206,7 @@
 
 /* Comment Form */
 .comment-form {
-  @apply mt-10 flex items-center gap-4 border-y border-y-dark-3 py-5 max-xs:flex-col !important;
+  @apply mt-10 flex items-center gap-4 border-y border-y-light-3 py-5 max-xs:flex-col !important;
 }
 
 .comment-form_btn {

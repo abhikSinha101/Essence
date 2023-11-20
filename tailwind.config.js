@@ -188,7 +188,9 @@ module.exports = {
         "light-3": "#B3B3B3",
         "gray-1": "#C5C5C5",
         "purple-1": "#a960ee",
-        "yellow-1": "#E8DAF5",
+        "yellow_text": "#F5EFDA",
+        "purple_text": "#E8DAF5",
+        "blue_text": "#DAE3F5",
 
         "gradientColorZero": "#a960ee",
         "gradientColorOne": "#ff333d",

@@ -18,6 +18,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 //import { updateUser } from "@/lib/actions/user.actions";
 import { CampaignValidation } from "@/lib/validations/campaign";
+import { createCampaign } from "@/lib/actions/campaign.actions";
 
 interface Props {
   user: {
@@ -31,41 +32,50 @@ interface Props {
   btnTitle: string;
 }
 
-function Campaigns({ userId }: { userId: string }) {
+function PostCampaigns({ userId }: { userId: string }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof CampaignValidation>>({
     resolver: zodResolver(CampaignValidation),
     defaultValues: {
-      campaigns: "",
+      campaign: "",
       accountId: userId,
     },
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (values: z.infer<typeof CampaignValidation>) => {
+    await createCampaign({
+      text: values.campaign,
+      author: userId,
+      teamId: null,
+      path: pathname,
+    });
+    router.push("/main");
+  };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className=" mt-8 flex flex-col justify-start gap-10"
+        className=" mt-4 flex flex-col justify-start gap-10"
       >
         <FormField
           control={form.control}
-          name="campaigns"
+          name="campaign"
           render={({ field }) => (
             <FormItem className="flex flex-col w-full gap-2">
               <FormLabel className="text-base-semibold text-dark-2">
-                Contnet
+                Write a campaign.
               </FormLabel>
-              <FormControl className="no-focus border boreder-dark-2 bg-dark-1 text-light-1">
+              <FormControl className="no-focus border boreder-dark-2 bg-light-2 text-dark-1">
                 <Textarea rows={15} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-purple-1">
+        <Button type="submit" className="bg-purple-1 hover:bg-purple-500">
           Post Campaign
         </Button>
       </form>
@@ -73,4 +83,4 @@ function Campaigns({ userId }: { userId: string }) {
   );
 }
 
-export default Campaigns;
+export default PostCampaigns;
