@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 function Topbar() {
   const pathname = usePathname();
-  const pathShowCase = pathname.replace("", "/Comments");
+  const pathShowCase = pathname.replace("/", "");
 
   return (
     <nav className="topbar">
