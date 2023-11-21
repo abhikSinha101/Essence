@@ -1,19 +1,33 @@
 "use client";
 import { inter } from "@/app/fonts/fonts";
 import { sidebarMediaLinks, sidebarDocLinks } from "@/constants";
+
 import {
   OrganizationSwitcher,
   SignOutButton,
   SignedIn,
   UserButton,
+  useUser,
 } from "@clerk/nextjs";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import UserCard from "../cards/UserCard";
 
 function LeftSidebar() {
   const router = useRouter();
   const pathname = usePathname();
+
+  const { user } = useUser();
+
+  if (!user) {
+    return null;
+  }
+  const userProfileImage = user?.imageUrl;
+  const userProfileUserName = user?.username;
+  const userProfileName = user?.fullName;
+
   return (
     <section className="custom-scrollbar leftsidebar">
       <div className="flex items-center p-4 gap-20 max-lg:hidden place-content-center">
@@ -103,17 +117,20 @@ function LeftSidebar() {
             <SignOutButton signOutCallback={() => router.push("/sign-in")}>
               <div className="flex cursor-pointer">
                 <Image
-                  src="/assets/pen.svg"
+                  src={userProfileImage}
                   alt="logout"
                   width={24}
                   height={24}
+                  className="rounded-full"
                 />
               </div>
             </SignOutButton>
           </SignedIn>
           <div className="flex flex-col gap-0">
-            <p className="text-dark-1 text-small-regular">UserName</p>
-            <p className="text-dark-3 text-subtle-medium">BOM</p>
+            <p className="text-dark-1 text-small-regular">
+              {userProfileUserName}
+            </p>
+            <p className="text-dark-3 text-subtle-medium">{userProfileName}</p>
           </div>
         </div>
 
