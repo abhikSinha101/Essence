@@ -8,6 +8,7 @@ import {
   SignedIn,
   UserButton,
   useUser,
+  useAuth,
 } from "@clerk/nextjs";
 
 import Image from "next/image";
@@ -18,6 +19,7 @@ import UserCard from "../cards/UserCard";
 function LeftSidebar() {
   const router = useRouter();
   const pathname = usePathname();
+  const { userId } = useAuth();
 
   const { user } = useUser();
 
@@ -29,7 +31,7 @@ function LeftSidebar() {
   const userProfileName = user?.fullName;
 
   return (
-    <section className="custom-scrollbar leftsidebar">
+    <section className="custom-scrollbar leftsidebar ">
       <div className="flex items-center p-4 gap-20 max-lg:hidden place-content-center">
         <Link href="/main">
           <Image
@@ -53,13 +55,16 @@ function LeftSidebar() {
         </Link>
       </div>
 
-      <div className="flex w-full flex-1 flex-col gap-1 pl-4 pr-4">
+      <div className="flex w-full flex-1 flex-col gap-1 pt-2 pl-4 pr-4">
         <p className="leftsidebar_section-text">Main Menu</p>
 
         {sidebarMediaLinks.map((link) => {
           const isActive =
-            (pathname.includes(link.route) && link.route.length > 1) ||
-            pathname === link.route;
+            pathname === link.route ||
+            (link.route !== "/main" && pathname.startsWith(link.route));
+
+          //if we open profile page then it wil show the user id
+          //if (link.route === "/profile") link.route = `${link.route}/${userId}`;
 
           return (
             <Link
@@ -67,7 +72,7 @@ function LeftSidebar() {
               key={link.label}
               className={`leftsidebar_link ${
                 isActive && "bg-light-2 items-center"
-              } `}
+              }`}
             >
               <Image
                 src={link.imgURL}
@@ -113,19 +118,19 @@ function LeftSidebar() {
 
       <div className="leftsidebar_profile">
         <div className="flex flex-row items-center gap-4">
-          <SignedIn>
-            <SignOutButton signOutCallback={() => router.push("/sign-in")}>
-              <div className="flex cursor-pointer">
-                <Image
-                  src={userProfileImage}
-                  alt="logout"
-                  width={24}
-                  height={24}
-                  className="rounded-full"
-                />
-              </div>
-            </SignOutButton>
-          </SignedIn>
+          <Link
+            href={`/main/profile/${userId}`}
+            className="flex cursor-pointer"
+          >
+            <Image
+              src={userProfileImage}
+              alt="logout"
+              width={24}
+              height={24}
+              className="rounded-full"
+            />
+          </Link>
+
           <div className="flex flex-col gap-0">
             <p className="text-dark-1 text-small-regular">
               {userProfileUserName}
@@ -148,3 +153,5 @@ function LeftSidebar() {
 }
 
 export default LeftSidebar;
+
+//TODO figure were to put the profile page

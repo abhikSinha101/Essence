@@ -38,8 +38,8 @@ export const sidebarMediaLinks = [
     },
     {
       imgURL:"/assets/camera.svg",
-      route:"/main/onboardings",
-      label:"Onboardings",
+      route:"/main/contacts",
+      label:"Contacts",
       leftIcon:"/assets/arrow-down.svg"
     },    
   ];
