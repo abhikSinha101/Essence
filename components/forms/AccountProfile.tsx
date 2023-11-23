@@ -41,22 +41,21 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof UserValidation>>({
     resolver: zodResolver(UserValidation),
     defaultValues: {
-      profile_photo: user?.image || "",
-      name: user?.name || "",
-      username: user?.username || "",
-      bio: user?.bio || "",
+      profile_photo: user?.image ? user.image : "",
+      name: user?.name ? user.name : "",
+      username: user?.username ? user.username : "",
+      bio: user?.bio ? user.bio : "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
     const blob = values.profile_photo;
 
-    const hasImageChnaged = isBase64Image(blob);
-
-    if (hasImageChnaged) {
+    const hasImageChanged = isBase64Image(blob);
+    if (hasImageChanged) {
       const imgRes = await startUpload(files);
 
       if (imgRes && imgRes[0].fileUrl) {
@@ -72,6 +71,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       image: values.profile_photo,
       path: pathname,
     });
+
     if (pathname === "/profile/edit") {
       router.back();
     } else {

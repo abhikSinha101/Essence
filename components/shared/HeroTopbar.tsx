@@ -21,7 +21,7 @@ function HeroTopbar() {
       <div className="flex items-center p-4 max-lg:hidden place-content-center  h-full">
         <Link href="/main">
           <Image
-            src="./Essencelogo.svg"
+            src="/assets/Essence.svg"
             alt="essencelogo"
             width={120}
             height={120}

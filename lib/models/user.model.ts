@@ -1,16 +1,17 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  id: { type: String, require: true },
-  userName: { type: String, require: true, unique: true },
-  name: { type: String, require: true },
-  image: { type: String },
-  bio: { type: String },
+  id: { type: String, required: true },
+  username: { type: String, unique: true, required: true },
+  name: { type: String, required: true },
+  image: String,
+  bio: String,
   campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: "Campaign" }],
   onBoarded: {
     type: Boolean,
     default: false,
   },
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: "Teams" }],
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

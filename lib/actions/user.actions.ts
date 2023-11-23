@@ -22,6 +22,8 @@ export async function updateUser({
   path,
 }: Params): Promise<void> {
   try {
+    //i had onBoarded to onboarded which caused some error which was not visible and thus i didnt had username,
+    //and the updateUser was not working.
     connectToDB();
     await User.findOneAndUpdate(
       { id: userId },

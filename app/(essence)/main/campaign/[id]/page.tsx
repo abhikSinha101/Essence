@@ -1,5 +1,5 @@
 import CampaignCard from "@/components/cards/CampaignCard";
-import UserCard from "@/components/cards/UserCard";
+
 import Comment from "@/components/forms/Comment";
 import {
   fetchCampaign,

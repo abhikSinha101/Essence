@@ -1,12 +1,11 @@
 import CampaignCard from "@/components/cards/CampaignCard";
 import { fetchCampaign } from "@/lib/actions/campaign.actions";
+import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const result = await fetchCampaign(1, 30);
   const user = await currentUser();
-
-  console.log(result);
 
   return (
     <>

@@ -14,7 +14,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import UserCard from "../cards/UserCard";
 
 function LeftSidebar() {
   const router = useRouter();
@@ -35,7 +34,7 @@ function LeftSidebar() {
       <div className="flex items-center p-4 gap-20 max-lg:hidden place-content-center">
         <Link href="/main">
           <Image
-            src="./Essencelogo.svg"
+            src="/assets/Essence.svg"
             alt="essencelogo"
             width={112}
             height={112}
@@ -118,10 +117,7 @@ function LeftSidebar() {
 
       <div className="leftsidebar_profile">
         <div className="flex flex-row items-center gap-4">
-          <Link
-            href={`/main/profile/${userId}`}
-            className="flex cursor-pointer"
-          >
+          <Link href={`/profile/${userId}`} className="flex cursor-pointer">
             <Image
               src={userProfileImage}
               alt="logout"
