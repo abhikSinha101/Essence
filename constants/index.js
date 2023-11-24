@@ -6,6 +6,12 @@ export const sidebarMediaLinks = [
     location: "Main",
   },
   {
+    imgURL: "/assets/search.svg",
+    route: "/main/search",
+    label: "Search",
+    location: "Main/Search",
+  },
+  {
     imgURL: "/assets/compaigns.svg",
     route: "/main/create-campaign",
     label: "Campaigns",
@@ -17,12 +23,7 @@ export const sidebarMediaLinks = [
     label: "Messages",
     location: "Main/Message",
   },
-  {
-    imgURL: "/assets/money.svg",
-    route: "/main/leads",
-    label: "Leads",
-    location: "Leads",
-  },
+
   {
     imgURL: "/assets/folder.svg",
     route: "/main/archive",
@@ -65,13 +66,13 @@ export const ContentSideBarLinks = [
 ];
 
 export const profileTabs = [
-  { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
-  { value: "replies", label: "Replies", icon: "/assets/members.svg" },
+  { value: "campaigns", label: "Campaigns", icon: "/assets/reply.svg" },
+  { value: "replies", label: "Replies", icon: "/assets/community.svg" },
   { value: "tagged", label: "Tagged", icon: "/assets/tag.svg" },
 ];
 
 export const communityTabs = [
-  { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
-  { value: "members", label: "Members", icon: "/assets/members.svg" },
+  { value: "campaigns", label: "Campaigns", icon: "/assets/reply.svg" },
+  { value: "members", label: "Members", icon: "/assets/community.svg" },
   { value: "requests", label: "Requests", icon: "/assets/request.svg" },
 ];

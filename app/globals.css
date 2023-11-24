@@ -76,7 +76,7 @@
   }
 
   .topbar {
-    @apply top-0 z-20 flex px-4 h-16 w-[100%] items-center rounded-lg justify-between bg-glassmorphism max-lg:hidden;
+    @apply top-0 z-20 flex pl-4 h-16 w-[100%] items-center rounded-lg justify-between bg-glassmorphism max-lg:hidden;
   }
 
   .bottombar {

@@ -54,7 +54,7 @@ const CampaignCard = ({
               </h4>
             </Link>
             <p className="mt-2 test-small-regular text-dark-2">{content}</p>
-            <div className="mt-5 flex flex-col gap-3">
+            <div className={`${isComment && "mb-2"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
                 <Image
                   src="/assets/heart.svg"

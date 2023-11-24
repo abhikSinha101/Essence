@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -15,7 +15,7 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-      
+
     fontSize: {
       "heading1-bold": [
         "36px",
@@ -188,18 +188,17 @@ module.exports = {
         "light-3": "#B3B3B3",
         "gray-1": "#C5C5C5",
         "purple-1": "#a960ee",
-        "yellow_text": "#F5EFDA",
-        "purple_text": "#E8DAF5",
-        "blue_text": "#DAE3F5",
+        yellow_text: "#F5EFDA",
+        purple_text: "#E8DAF5",
+        blue_text: "#DAE3F5",
 
-        "gradientColorZero": "#a960ee",
-        "gradientColorOne": "#ff333d",
-        "gradientColorTwo" : "#90e0ff",
-        "gradientColorThree": "#ffcb57",
+        gradientColorZero: "#a960ee",
+        gradientColorOne: "#ff333d",
+        gradientColorTwo: "#90e0ff",
+        gradientColorThree: "#ffcb57",
 
-        glassmorphism:"rgba(255, 255, 255,0.25)",
-        glassmorphism_display:"rgba(255, 255, 255,0.35)",
-
+        glassmorphism: "rgba(255, 255, 255,0.25)",
+        glassmorphism_display: "rgba(255, 255, 255,0.35)",
       },
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
@@ -225,4 +224,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
