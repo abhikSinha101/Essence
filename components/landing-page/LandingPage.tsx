@@ -25,7 +25,7 @@ const LandingPage = () => {
               />
               <Link
                 href="/"
-                className="rounded-3xl py-2 px-3 justify-start bg-purple-1"
+                className="rounded-3xl py-2 px-3 justify-start bg-btn-color"
               >
                 <p>Connect</p>
               </Link>

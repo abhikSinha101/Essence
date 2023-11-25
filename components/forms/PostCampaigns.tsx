@@ -75,7 +75,7 @@ function PostCampaigns({ userId }: { userId: string }) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-purple-1 hover:bg-purple-500">
+        <Button type="submit" className="bg-btn-color hover:bg-red-600">
           Post Campaign
         </Button>
       </form>

@@ -30,7 +30,7 @@ const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
         <p className="text-small-medium text-gray-1 ">@{username}</p>
       </div>
       <Button
-        className="bg-dark-2"
+        className="bg-[#EB455F] hover:bg-dark-2"
         onClick={() => {
           router.push(`/profile/${id}`);
         }}

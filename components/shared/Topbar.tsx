@@ -1,17 +1,23 @@
 "use client";
 
-import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  SignOutButton,
+  SignedIn,
+  useAuth,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
-  Calculator,
-  Calendar,
   CreditCard,
   Settings,
   User,
   Mail,
+  Folder,
+  Video,
+  Banana,
 } from "lucide-react";
 import React, { MouseEvent } from "react";
 import {
@@ -25,9 +31,20 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { Button } from "../ui/button";
 
 import { useRouter } from "next/navigation";
+import NotificationCard from "../cards/NotificationCard";
 
 function Topbar() {
   const pathname = usePathname();
@@ -52,11 +69,6 @@ function Topbar() {
     setOpen((open) => !open);
   };
 
-  const handleMessagesClick = () => {
-    router.push("/main/message"); // Update this with your actual route
-    setOpen(false); // Close the CommandDialog after navigation
-  };
-
   return (
     <nav className="topbar">
       <p className="capitalize text-dark-1 text-body-normal text-center max-xs:hidden">
@@ -64,6 +76,20 @@ function Topbar() {
       </p>
 
       <div className="flex">
+        <div className="flex p-2 items-center place-content-center ">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Banana color="#224444" width={24} height={24} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+
+              <NotificationCard />
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
         <Button
           className="h-full bg-transparent hover:bg-transparent"
           onClick={clickHandler}
@@ -86,18 +112,37 @@ function Topbar() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <Calendar className="mr-2 h-4 w-4" />
-                <span>Calendar</span>
+                <div
+                  className="flex flex-row items-center w-full h-full cursor-pointer"
+                  onClick={() => {
+                    router.push("/main/archive");
+                    setOpen(false);
+                  }}
+                >
+                  <Folder className="mr-2 h-4 w-4" />
+                  <span>Archive</span>
+                </div>
               </CommandItem>
               <CommandItem>
-                <Calculator className="mr-2 h-4 w-4" />
-                <span>Calculator</span>
+                <div
+                  className="flex flex-row items-center w-full h-full cursor-pointer"
+                  onClick={() => {
+                    router.push("/main/contacts");
+                    setOpen(false);
+                  }}
+                >
+                  <Video className="mr-2 h-4 w-4" />
+                  <span>Onboardings</span>
+                </div>
               </CommandItem>
 
               <CommandItem>
                 <div
                   className="flex flex-row items-center w-full h-full cursor-pointer"
-                  onClick={handleMessagesClick}
+                  onClick={() => {
+                    router.push("/main/message"); // Update this with your actual route
+                    setOpen(false);
+                  }}
                 >
                   <Mail className="mr-2 h-4 w-4" />
                   <span>Messages</span>
@@ -107,8 +152,16 @@ function Topbar() {
             <CommandSeparator />
             <CommandGroup heading="Settings">
               <CommandItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+                <div
+                  className="flex flex-row items-center w-full h-full cursor-pointer"
+                  onClick={() => {
+                    router.push(`/profile`);
+                  }}
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </div>
+
                 <CommandShortcut>⌘P</CommandShortcut>
               </CommandItem>
               <CommandItem>

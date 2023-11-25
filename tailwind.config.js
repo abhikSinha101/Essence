@@ -187,7 +187,7 @@ module.exports = {
         "light-2": "#F4F4F4",
         "light-3": "#B3B3B3",
         "gray-1": "#C5C5C5",
-        "purple-1": "#a960ee",
+        "btn-color": "#EB455F",
         yellow_text: "#F5EFDA",
         purple_text: "#E8DAF5",
         blue_text: "#DAE3F5",

@@ -128,3 +128,26 @@ export async function fetchUsers({
     throw new Error(`Failed to fetch users ${error.message}`);
   }
 }
+
+export async function getNotification(userId: string) {
+  try {
+    connectToDB();
+
+    //find all campaigns created by the user
+    const userCampaigns = await Campaign.find({ author: userId });
+
+    //collect al the child campaign ids (reiplies) from the chldren
+    const childCampaignIds = userCampaigns.reduce((acc, userCampaigns) => {
+      return acc.concat(userCampaigns.children);
+    }, []);
+
+    const replies = await Campaign.find({
+      _id: { $in: childCampaignIds },
+      author: { $ne: userId },
+    }).populate({ path: "author", model: User, select: "name image _id" });
+
+    return replies;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch notifications ${error.message}`);
+  }
+}

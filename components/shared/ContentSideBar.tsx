@@ -33,7 +33,7 @@ function ContentSideBar() {
             height={20}
             priority
           />
-          <p className="flex items-center justify-center text-center text-small-regular h-full w-full">
+          <p className="flex flex-1 items-center justify-center text-center text-small-regular w-full">
             New Message
           </p>
         </Button>

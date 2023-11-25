@@ -60,7 +60,7 @@
   }
 
   .user-card_avatar {
-    @apply flex flex-1 items-start justify-start gap-3 xs:items-center;
+    @apply flex items-start justify-start gap-3 xs:items-center;
   }
 
   .user-card_btn {
@@ -210,5 +210,5 @@
 }
 
 .comment-form_btn {
-  @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+  @apply rounded-3xl bg-btn-color px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
 }
