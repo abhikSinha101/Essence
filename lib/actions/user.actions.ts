@@ -133,21 +133,27 @@ export async function getNotification(userId: string) {
   try {
     connectToDB();
 
-    //find all campaigns created by the user
+    // Find all threads created by the user
     const userCampaigns = await Campaign.find({ author: userId });
 
-    //collect al the child campaign ids (reiplies) from the chldren
-    const childCampaignIds = userCampaigns.reduce((acc, userCampaigns) => {
+    // Collect all the child thread ids (replies) from the 'children' field of each user thread
+    const childThreadIds = userCampaigns.reduce((acc, userCampaigns) => {
       return acc.concat(userCampaigns.children);
     }, []);
 
+    // Find and return the child threads (replies) excluding the ones created by the same user
     const replies = await Campaign.find({
-      _id: { $in: childCampaignIds },
-      author: { $ne: userId },
-    }).populate({ path: "author", model: User, select: "name image _id" });
+      _id: { $in: childThreadIds },
+      author: { $ne: userId }, // Exclude threads authored by the same user
+    }).populate({
+      path: "author",
+      model: User,
+      select: "name image _id",
+    });
 
     return replies;
-  } catch (error: any) {
-    throw new Error(`Failed to fetch notifications ${error.message}`);
+  } catch (error) {
+    console.error("Error fetching replies: ", error);
+    throw error;
   }
 }

@@ -11,14 +11,63 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ReadableStreamDefaultController } from "stream/web";
+import fetchData from "@/lib/fetchData";
+
+interface Notification {
+  _id: string;
+  parentId: string;
+  author: {
+    image: string;
+  };
+}
 
 function NotificationCard() {
+  const [notification, setNotification] = useState<Notification[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/user");
+        const data = await response.json();
+        setNotification(data.notification);
+      } catch (error) {
+        console.log("Error fetching user data", error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log("dd", notification);
+  //notification is showing null
+
   return (
     <Alert>
       <Terminal className="h-4 w-4" />
-      <AlertTitle>Heads up!</AlertTitle>
+
       <AlertDescription>
-        You can add components to your app using the cli.
+        {notification && notification.length > 0 ? (
+          <>
+            {notification.map((notification) => {
+              <Link
+                key={notification._id}
+                href={`/main/campaigns/${notification.parentId}`}
+              >
+                <article className="activity-card">
+                  <Image
+                    src={notification.author.image}
+                    alt="profile image"
+                    width={20}
+                    height={20}
+                    className="rounded-full object-cover"
+                  />
+                </article>
+              </Link>;
+            })}
+          </>
+        ) : (
+          <>
+            <p>no notification.</p>
+          </>
+        )}
       </AlertDescription>
     </Alert>
   );
