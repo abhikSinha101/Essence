@@ -20,18 +20,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { CampaignValidation } from "@/lib/validations/campaign";
 import { createCampaign } from "@/lib/actions/campaign.actions";
 
-interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
-}
-
 function PostCampaigns({ userId }: { userId: string }) {
   const router = useRouter();
   const pathname = usePathname();

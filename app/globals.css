@@ -149,11 +149,11 @@
   }
 
   .custom-scrollbar_lp::-webkit-scrollbar-track {
-    background: rgb(70, 70, 70);
+    background: rgb(71, 62, 95);
   }
 
   .custom-scrollbar_lp::-webkit-scrollbar-thumb {
-    background: rgb(158, 27, 233);
+    background: rgb(172, 66, 233);
     border-radius: 50px;
   }
 

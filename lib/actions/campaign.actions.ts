@@ -16,6 +16,7 @@ export async function createCampaign({ text, author, teamId, path }: Params) {
   try {
     connectToDB();
 
+    //creating campaign in mongodb
     const createdCampaign = await Campaign.create({
       text,
       author,
@@ -29,7 +30,7 @@ export async function createCampaign({ text, author, teamId, path }: Params) {
 
     revalidatePath(path);
   } catch (error: any) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to create campaign: ${error.message}`);
   }
 }
 

@@ -45,7 +45,7 @@ export default function RootLayout({
                   </div>
 
                   <section className="main-container overflow-auto h-full">
-                    <div className="w-full max-w-4xl">{children}</div>
+                    <div className="w-full max-w-4xl h-full">{children}</div>
                   </section>
                 </section>
               </section>
