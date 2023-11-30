@@ -12,8 +12,9 @@ interface Props {
 }
 
 const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
-  const router = useRouter();
+  //this id is the person's id to which i wanna have convo?
 
+  const router = useRouter();
   return (
     <article className="user-card">
       <div className="user-card_avatar">
@@ -30,7 +31,7 @@ const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
         <p className="text-small-medium text-gray-1 ">@{username}</p>
       </div>
       <Button
-        className="bg-[#EB455F] hover:bg-dark-2"
+        className="bg-[#EB455F] hover:bg-red-500"
         onClick={() => {
           router.push(`/profile/${id}`);
         }}

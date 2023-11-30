@@ -18,7 +18,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MessageValidation } from "@/lib/validations/message";
 import { Send } from "lucide-react";
 import React from "react";
-import { createMessage } from "@/lib/actions/message.actions";
+import {
+  createConversation,
+  createMessage,
+} from "@/lib/actions/conversation.actions";
 import { usePathname, useRouter } from "next/navigation";
 
 function PostMessage({ userId }: { userId: string }) {
@@ -41,13 +44,14 @@ function PostMessage({ userId }: { userId: string }) {
       message: "",
     },
   });
+
   const onSubmit = async (values: z.infer<typeof MessageValidation>) => {
     console.log("Message ", values.message, userId);
     //create message
     //the function is being called and is creating
-    await createMessage({
-      message: values.message,
-    });
+
+    //TODO: get userId's
+
     form.reset();
   };
 

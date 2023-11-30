@@ -15,6 +15,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   if (!userInfo?.onBoarded) redirect("/onboarding");
 
+  //this page is showing result of other person's id which we clicked on
+  //TODO: on clicking message make a conversation with this user's id and my current user id
+  console.log(userInfo.id);
+
   return (
     <section className="w-full text-base-regular">
       <ProfileHeader
@@ -28,7 +32,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
       <div className="mt-9">
         <Tabs defaultValue="campaigns" className="w-full">
-          <TabsList className="tab">
+          <TabsList className="tab bg-light-2">
             {profileTabs.map((tab) => (
               <TabsTrigger key={tab.label} value={tab.value} className="tab">
                 <Image
