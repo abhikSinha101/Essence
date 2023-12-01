@@ -1,6 +1,7 @@
 "use client";
 import { createConversation } from "@/lib/actions/conversation.actions";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 interface Params {
   userId: string;
@@ -8,8 +9,11 @@ interface Params {
 }
 
 const MessageButton = ({ userId, accountId }: Params) => {
+  const router = useRouter();
+
   const create = async () => {
     await createConversation({ userId_1: userId, userId_2: accountId });
+    router.push(`/main/message`);
   };
   return (
     <Button
