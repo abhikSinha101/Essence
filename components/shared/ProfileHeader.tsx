@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import StartConversation from "../messenger/StartConversation";
 
 interface Props {
   accountId: string;

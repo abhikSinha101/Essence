@@ -30,6 +30,7 @@ export async function createMessage({ message, creator }: Params) {
 
 //conversation is working
 export async function createConversation({ userId_1, userId_2 }: params) {
+  console.log("creating");
   try {
     // Check if a conversation already exists
     const existingConversation = await Conversation.findOne({

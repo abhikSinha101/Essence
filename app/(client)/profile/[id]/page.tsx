@@ -1,3 +1,4 @@
+import StartConversation from "@/components/messenger/StartConversation";
 import CampaignsTab from "@/components/shared/CampaignsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
@@ -29,6 +30,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         imgUrl={userInfo.image}
         bio={userInfo.bio}
       />
+      <StartConversation accountId={userInfo._id} />
 
       <div className="mt-9">
         <Tabs defaultValue="campaigns" className="w-full">
