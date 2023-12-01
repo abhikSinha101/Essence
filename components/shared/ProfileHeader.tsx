@@ -39,14 +39,6 @@ const ProfileHeader = ({
             </h2>
           </div>
         </div>
-
-        <Button
-          className="bg-green-500 hover:bg-green-600 rounded-3xl"
-          onClick={() => console.log(accountId)}
-        >
-          Message
-          {/**start a convo with the accountId*/}
-        </Button>
       </div>
       {/**TODO: teams */}
 

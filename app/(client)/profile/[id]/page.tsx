@@ -18,7 +18,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   //this page is showing result of other person's id which we clicked on
   //TODO: on clicking message make a conversation with this user's id and my current user id
-  console.log(userInfo.id);
 
   return (
     <section className="w-full text-base-regular">

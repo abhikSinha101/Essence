@@ -5,6 +5,9 @@ import {
   createConversation,
   createMessage,
 } from "@/lib/actions/conversation.actions";
+import React from "react";
+import { Button } from "../ui/button";
+import MessageButton from "./MessageButton";
 
 interface Params {
   accountId: string;
@@ -20,13 +23,10 @@ async function StartConversation({ accountId }: Params) {
 
   if (!userInfo?.onBoarded) redirect("/onboarding");
 
-  await createConversation({ userId_1: userId, userId_2: accountId });
-
   return (
     <>
-      <h1>
-        {accountId} {""} {userInfo.id}
-      </h1>
+      <h1>Text the person?</h1>
+      <MessageButton userId={userId} accountId={accountId} />
     </>
   );
 }
