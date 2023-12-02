@@ -4,7 +4,7 @@ import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { profileTabs } from "@/constants";
 import { fetchUser } from "@/lib/actions/user.actions";
-import { currentUser } from "@clerk/nextjs";
+import { UserButton, currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -29,7 +29,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
         imgUrl={userInfo.image}
         bio={userInfo.bio}
       />
-      <StartConversation accountId={userInfo._id} />
+      <div className="flex flex-row justify-between items-center mt-2">
+        <StartConversation accountId={userInfo._id} />
+        <UserButton />
+      </div>
 
       <div className="mt-9">
         <Tabs defaultValue="campaigns" className="w-full">

@@ -25,7 +25,6 @@ async function StartConversation({ accountId }: Params) {
 
   return (
     <>
-      <h1>Text the person?</h1>
       <MessageButton userId={userId} accountId={accountId} />
     </>
   );

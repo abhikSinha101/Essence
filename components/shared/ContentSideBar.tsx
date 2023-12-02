@@ -51,18 +51,6 @@ async function ContentSideBar() {
             ))}
           </>
         )}
-
-        {""}
-        {""}
-        {""}
-        {""}
-
-        <p>UserCard</p>
-        <p>UserCard</p>
-        <p>UserCard</p>
-        <p>UserCard</p>
-        <p>UserCard</p>
-        <p>UserCard</p>
       </div>
     </section>
   );
