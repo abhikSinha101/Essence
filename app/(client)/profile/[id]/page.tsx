@@ -30,7 +30,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         bio={userInfo.bio}
       />
       <div className="flex flex-row justify-between items-center mt-2">
-        <StartConversation accountId={userInfo._id} />
+        <StartConversation accountId={userInfo._id} messageId={userInfo._id} />
         <UserButton />
       </div>
 

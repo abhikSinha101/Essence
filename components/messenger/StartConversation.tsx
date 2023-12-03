@@ -11,9 +11,10 @@ import MessageButton from "./MessageButton";
 
 interface Params {
   accountId: string;
+  messageId: string;
 }
 
-async function StartConversation({ accountId }: Params) {
+async function StartConversation({ accountId, messageId }: Params) {
   const user = await currentUser();
 
   if (!user) return null;
@@ -25,7 +26,11 @@ async function StartConversation({ accountId }: Params) {
 
   return (
     <>
-      <MessageButton userId={userId} accountId={accountId} />
+      <MessageButton
+        userId={userId}
+        accountId={accountId}
+        messageId={messageId}
+      />
     </>
   );
 }

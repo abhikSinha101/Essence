@@ -31,7 +31,7 @@ export async function createMessage({ message, creator }: Params) {
 //conversation is working
 export async function createConversation({ userId_1, userId_2 }: params) {
   try {
-    // Check if a conversation already exists
+    connectToDB();
     const existingConversation = await Conversation.findOne({
       participants: { $all: [userId_1, userId_2] },
     });
@@ -47,10 +47,25 @@ export async function createConversation({ userId_1, userId_2 }: params) {
     // Create a new conversation
     const newConversation = await Conversation.create({
       participants: [userId_1, userId_2],
+      exchange: true,
     });
 
     return newConversation._id;
   } catch (error: any) {
     throw new Error(`Failed to start conversation: ${error.message}`);
+  }
+}
+
+export async function fetchConversation(userId: string, personId: string) {
+  try {
+    connectToDB();
+    //fetch conversation via userid & personId
+    const conversation = Conversation.findOne({
+      participants: { $all: [userId, personId] },
+    });
+
+    return conversation;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch conversation: ${error.message}`);
   }
 }

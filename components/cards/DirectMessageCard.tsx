@@ -29,6 +29,7 @@ const DirectMessageCard = ({
   };
 
   const isCurrentRoute = pathname === `/main/message/${id}`;
+
   return (
     <>
       {}

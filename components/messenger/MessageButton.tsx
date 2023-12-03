@@ -6,14 +6,15 @@ import { useRouter } from "next/navigation";
 interface Params {
   userId: string;
   accountId: string;
+  messageId: string;
 }
 
-const MessageButton = ({ userId, accountId }: Params) => {
+const MessageButton = ({ userId, accountId, messageId }: Params) => {
   const router = useRouter();
 
   const create = async () => {
     await createConversation({ userId_1: userId, userId_2: accountId });
-    router.push(`/main/message`);
+    router.push(`/main/message/${messageId}`);
   };
   return (
     <Button

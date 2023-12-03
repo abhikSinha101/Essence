@@ -2,8 +2,6 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import PostMessage from "@/components/messenger/PostMessage";
-
 const Page = async () => {
   const user = await currentUser();
 
@@ -14,34 +12,8 @@ const Page = async () => {
 
   return (
     <section className="flex flex-col h-full">
-      <div className="overflow-y-auto flex-1 custom-scrollbar_hidden">
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>{" "}
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>{" "}
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>{" "}
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>{" "}
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>{" "}
-        <h1 className=" text-heading1-bold mt-10 text-gradientColorZero">
-          Message
-        </h1>
-      </div>
-      <div className="my-2 bottom-10 bg-transparent">
-        <PostMessage userId={userInfo._id} />
+      <div className="flex flex-col items-center text-center">
+        Start a conversation.
       </div>
     </section>
   );

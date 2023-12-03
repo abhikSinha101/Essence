@@ -13,6 +13,7 @@ import ContentSideBarMenu from "./ContentSideBarMenu";
 import DirectMessageCard from "../cards/DirectMessageCard";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
+import { fetchConversation } from "@/lib/actions/conversation.actions";
 
 async function ContentSideBar() {
   const user = await currentUser();
@@ -42,7 +43,7 @@ async function ContentSideBar() {
             {result.users.map((person) => (
               <DirectMessageCard
                 key={person.id}
-                id={person.id}
+                id={person._id}
                 name={person.name}
                 username={person.username}
                 imgUrl={person.image}
