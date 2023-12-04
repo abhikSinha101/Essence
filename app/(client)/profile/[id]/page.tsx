@@ -1,4 +1,4 @@
-import StartConversation from "@/components/messenger/StartConversation";
+import MessageButton from "@/components/messenger/MessageButton";
 import CampaignsTab from "@/components/shared/CampaignsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
@@ -15,10 +15,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const userInfo = await fetchUser(params.id);
 
   if (!userInfo?.onBoarded) redirect("/onboarding");
-
-  //this page is showing result of other person's id which we clicked on
-  //TODO: on clicking message make a conversation with this user's id and my current user id
-
+  const userId = userInfo.id;
   return (
     <section className="w-full text-base-regular">
       <ProfileHeader
@@ -30,7 +27,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         bio={userInfo.bio}
       />
       <div className="flex flex-row justify-between items-center mt-2">
-        <StartConversation accountId={userInfo._id} messageId={userInfo._id} />
+        <MessageButton messageId={userInfo._id} />
         <UserButton />
       </div>
 

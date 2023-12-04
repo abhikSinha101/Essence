@@ -1,4 +1,4 @@
-"use server";
+/*"use server";
 
 import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
@@ -6,30 +6,8 @@ import { connectToDB } from "../mongoose";
 import Message from "../models/conversation.model";
 import Conversation from "../models/conversation.model";
 
-interface Params {
-  message: string;
-  creator: string;
-}
-
-interface params {
-  userId_1: string;
-  userId_2: string;
-}
-
-//make a start convo function
-export async function createMessage({ message, creator }: Params) {
-  try {
-    connectToDB();
-
-    //creating message
-    await Conversation.create({ message, creator });
-  } catch (error: any) {
-    throw new Error(`Failed to create message: ${error.message}`);
-  }
-}
-
 //conversation is working
-export async function createConversation({ userId_1, userId_2 }: params) {
+export async function createConversation(userId_1: string, userId_2: string) {
   try {
     connectToDB();
     const existingConversation = await Conversation.findOne({
@@ -69,3 +47,22 @@ export async function fetchConversation(userId: string, personId: string) {
     throw new Error(`Failed to fetch conversation: ${error.message}`);
   }
 }
+
+//make a start convo function
+export async function sendMessage(conversationId: string) {
+  try {
+    connectToDB();
+    const conversation = await Conversation.findById(conversationId);
+
+    if (!conversation) {
+      throw new Error("Conversation not found");
+    }
+
+    //conversation.messages.push("dwad");
+
+    return conversation;
+  } catch (error: any) {
+    throw new Error(`Failed to sending message: ${error.message}`);
+  }
+}
+*/

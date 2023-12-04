@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/*import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema({
   conversationId: {
@@ -15,3 +15,4 @@ const Message =
   mongoose.models.Message || mongoose.model("Message", messageSchema);
 
 module.exports = Message;
+*/

@@ -20,8 +20,6 @@ import { Send } from "lucide-react";
 import React from "react";
 
 import { usePathname, useRouter } from "next/navigation";
-import { fetchPerson, fetchUsers } from "@/lib/actions/user.actions";
-import { fetchConversation } from "@/lib/actions/conversation.actions";
 
 function PostMessage({ userId }: { userId: string }) {
   const pathname = usePathname();
@@ -49,17 +47,7 @@ function PostMessage({ userId }: { userId: string }) {
   const onSubmit = async (values: z.infer<typeof MessageValidation>) => {
     console.log("Message ", values.message, userId);
 
-    ///about person id we might need a fetchPersonId action - DONE
-    //find the conversation of the user and person via their id's
-    //if found then create message
-    const result = await fetchPerson(pathname);
-
-    console.log(result);
-
-    const convo = await fetchConversation(userId, result);
-
-    console.log("/n", convo);
-
+    //messaging
     form.reset();
   };
 

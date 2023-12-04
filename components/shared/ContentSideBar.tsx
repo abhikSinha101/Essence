@@ -13,7 +13,6 @@ import ContentSideBarMenu from "./ContentSideBarMenu";
 import DirectMessageCard from "../cards/DirectMessageCard";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
-import { fetchConversation } from "@/lib/actions/conversation.actions";
 
 async function ContentSideBar() {
   const user = await currentUser();
