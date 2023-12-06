@@ -33,5 +33,29 @@ export async function fetchChatId(chatId: string) {
     connectToDB();
 
     return await Chat.findById(chatId);
-  } catch (error) {}
+  } catch (error: any) {
+    throw new Error(`error fetching chatIds ${error.message}`);
+  }
+}
+
+export async function fetchChats() {
+  try {
+    connectToDB();
+
+    return await Chat.find();
+  } catch (error: any) {
+    throw new Error(`error fetching chats ${error.message}`);
+  }
+}
+
+export async function fetchChatViaUserId(userId: string, personId: string) {
+  try {
+    connectToDB();
+
+    const chat = await Chat.findOne({ participants: [userId, personId] });
+
+    return chat;
+  } catch (error: any) {
+    throw new Error(`error fetching chats via id ${error.message}`);
+  }
 }

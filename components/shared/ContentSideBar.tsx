@@ -6,6 +6,11 @@ import ContentSideBarMenu from "./ContentSideBarMenu";
 import DirectMessageCard from "../cards/DirectMessageCard";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
+import {
+  fetchChatId,
+  fetchChatViaUserId,
+  fetchChats,
+} from "@/lib/actions/chat.action";
 
 async function ContentSideBar() {
   const user = await currentUser();
@@ -23,9 +28,15 @@ async function ContentSideBar() {
     pageSize: 25,
   });
 
-  console.log(user.id, userInfo.id);
+  const personIds = result.users.map((person) => person._id);
 
-  //remove the directmessagecard and check if i have send a message request to that person
+  //tests
+  for (const personId of personIds) {
+    const chat = await fetchChatViaUserId(userInfo._id, personId);
+
+    console.log(`Chat found with personId: ${personId}, chatId: ${chat._id}`);
+  }
+
   return (
     <section className="contentsidebar custom-scrollbar p-4">
       <ContentSideBarMenu />
@@ -35,14 +46,17 @@ async function ContentSideBar() {
           <p className="no-result">No User</p>
         ) : (
           <>
-            {result.users.map((person) => (
-              <DirectMessageCard
-                key={person.id}
-                chatId={person._id}
-                name={person.name}
-                imgUrl={person.image}
-              />
-            ))}
+            {result.users.map(async (person) => {
+              const chat = await fetchChatViaUserId(userInfo._id, person._id);
+              return (
+                <DirectMessageCard
+                  key={person.id}
+                  chatId={chat._id}
+                  name={person.name}
+                  imgUrl={person.image}
+                />
+              );
+            })}
           </>
         )}
       </div>

@@ -11,8 +11,6 @@ interface Props {
 }
 
 const DirectMessageCard = ({ chatId, name, imgUrl }: Props) => {
-  //id person
-
   const router = useRouter();
   const pathname = usePathname();
 
@@ -22,17 +20,9 @@ const DirectMessageCard = ({ chatId, name, imgUrl }: Props) => {
 
   const isCurrentRoute = pathname === `/main/message/${chatId}`;
 
-  //bug due to looping for users
   return (
     <>
-      <p className="text-tiny-medium">No Active Chats</p>
-    </>
-  );
-};
-
-export default DirectMessageCard;
-
-/***<Button
+      <Button
         className={`user-card ${
           isCurrentRoute
             ? "bg-light-2 hover:bg-light-2"
@@ -52,4 +42,9 @@ export default DirectMessageCard;
         <div className="flex-1 text-ellipsis">
           <h3 className="text-start text-base-medium text-dark-1">{name}</h3>
         </div>
-      </Button> */
+      </Button>
+    </>
+  );
+};
+
+export default DirectMessageCard;
