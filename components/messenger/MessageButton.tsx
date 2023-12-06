@@ -3,14 +3,14 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
 interface Params {
-  messageId: string;
+  chatId: string;
 }
 
-const MessageButton = ({ messageId }: Params) => {
+const MessageButton = ({ chatId }: Params) => {
   const router = useRouter();
 
-  const create = async () => {
-    router.push(`/main/message/${messageId}`);
+  const create = () => {
+    router.push(`/main/message/${chatId}`);
   };
   return (
     <Button

@@ -5,35 +5,34 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface Props {
-  id: string;
+  chatId: string;
   name: string;
-  username: string;
   imgUrl: string;
-  personType: string;
 }
 
-const DirectMessageCard = ({
-  id,
-  name,
-  username,
-  imgUrl,
-  personType,
-}: Props) => {
-  //this id is the person's id to which i wanna have convo?
+const DirectMessageCard = ({ chatId, name, imgUrl }: Props) => {
+  //id person
 
   const router = useRouter();
   const pathname = usePathname();
 
   const messageClick = () => {
-    router.push(`/main/message/${id}`);
+    router.push(`/main/message/${chatId}`);
   };
 
-  const isCurrentRoute = pathname === `/main/message/${id}`;
+  const isCurrentRoute = pathname === `/main/message/${chatId}`;
 
+  //bug due to looping for users
   return (
     <>
-      {}
-      <Button
+      <p className="text-tiny-medium">No Active Chats</p>
+    </>
+  );
+};
+
+export default DirectMessageCard;
+
+/***<Button
         className={`user-card ${
           isCurrentRoute
             ? "bg-light-2 hover:bg-light-2"
@@ -53,9 +52,4 @@ const DirectMessageCard = ({
         <div className="flex-1 text-ellipsis">
           <h3 className="text-start text-base-medium text-dark-1">{name}</h3>
         </div>
-      </Button>
-    </>
-  );
-};
-
-export default DirectMessageCard;
+      </Button> */

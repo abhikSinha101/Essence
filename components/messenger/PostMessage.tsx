@@ -21,7 +21,7 @@ import React from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 
-function PostMessage({ userId }: { userId: string }) {
+function PostMessage() {
   const pathname = usePathname();
 
   const router = useRouter();
@@ -40,12 +40,12 @@ function PostMessage({ userId }: { userId: string }) {
   const form = useForm<z.infer<typeof MessageValidation>>({
     resolver: zodResolver(MessageValidation),
     defaultValues: {
-      message: "",
+      text: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof MessageValidation>) => {
-    console.log("Message ", values.message, userId);
+    console.log("Message ", values.text);
 
     //messaging
     form.reset();
@@ -60,7 +60,7 @@ function PostMessage({ userId }: { userId: string }) {
         >
           <FormField
             control={form.control}
-            name="message"
+            name="text"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="no-focus bg-glassmorphism_display text-dark-1">

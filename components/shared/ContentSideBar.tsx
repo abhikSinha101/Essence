@@ -1,14 +1,7 @@
 import { inter } from "@/app/fonts/fonts";
 
-import {
-  SignOutButton,
-  SignedIn,
-  UserButton,
-  currentUser,
-} from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { currentUser } from "@clerk/nextjs";
+
 import ContentSideBarMenu from "./ContentSideBarMenu";
 import DirectMessageCard from "../cards/DirectMessageCard";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
@@ -22,7 +15,7 @@ async function ContentSideBar() {
 
   if (!userInfo?.onBoarded) redirect("/onboarding");
 
-  //fetch users
+  //fetch users execpt my user
   const result = await fetchUsers({
     userId: user.id,
     searchString: "",
@@ -30,6 +23,9 @@ async function ContentSideBar() {
     pageSize: 25,
   });
 
+  console.log(user.id, userInfo.id);
+
+  //remove the directmessagecard and check if i have send a message request to that person
   return (
     <section className="contentsidebar custom-scrollbar p-4">
       <ContentSideBarMenu />
@@ -42,11 +38,9 @@ async function ContentSideBar() {
             {result.users.map((person) => (
               <DirectMessageCard
                 key={person.id}
-                id={person._id}
+                chatId={person._id}
                 name={person.name}
-                username={person.username}
                 imgUrl={person.image}
-                personType="User"
               />
             ))}
           </>

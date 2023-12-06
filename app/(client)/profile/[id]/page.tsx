@@ -3,6 +3,7 @@ import CampaignsTab from "@/components/shared/CampaignsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
 import { profileTabs } from "@/constants";
+import { fetchChatId, generateChatId } from "@/lib/actions/chat.action";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { UserButton, currentUser } from "@clerk/nextjs";
 import Image from "next/image";
@@ -13,9 +14,13 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   if (!user) return null;
   const userInfo = await fetchUser(params.id);
+  const myUser = await fetchUser(user.id);
 
   if (!userInfo?.onBoarded) redirect("/onboarding");
-  const userId = userInfo.id;
+
+  const chatId = await generateChatId(myUser._id, userInfo._id);
+  console.log(myUser.id, userInfo.id);
+
   return (
     <section className="w-full text-base-regular">
       <ProfileHeader
@@ -27,7 +32,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         bio={userInfo.bio}
       />
       <div className="flex flex-row justify-between items-center mt-2">
-        <MessageButton messageId={userInfo._id} />
+        <MessageButton chatId={chatId} />
         <UserButton />
       </div>
 

@@ -10,6 +10,7 @@ interface Params {
   userId: string;
   username: string;
   name: string;
+  email: string;
   bio: string;
   image: string;
   path: string;
@@ -19,6 +20,7 @@ export async function updateUser({
   userId,
   username,
   name,
+  email,
   bio,
   image,
   path,
@@ -32,6 +34,7 @@ export async function updateUser({
       {
         username: username.toLowerCase(),
         name,
+        email,
         bio,
         image,
         onBoarded: true,
@@ -156,11 +159,4 @@ export async function getNotification(userId: string) {
     console.error("Error fetching replies: ", error);
     throw error;
   }
-}
-
-//maybe make a fetchPerson action
-export async function fetchPerson(pathname: string) {
-  const match = pathname.match(/\/main\/message\/(\w+)/);
-
-  return match ? match[1] : null;
 }

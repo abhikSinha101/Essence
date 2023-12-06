@@ -67,6 +67,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       userId: user.id,
       username: values.username,
       name: values.name,
+
       bio: values.bio,
       image: values.profile_photo,
       path: pathname,
@@ -194,7 +195,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               </FormLabel>
               <FormControl>
                 <Textarea
-                  rows={8}
+                  rows={6}
                   className="account-form_input no-focus"
                   {...field}
                 />
