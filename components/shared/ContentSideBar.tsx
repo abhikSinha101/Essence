@@ -28,14 +28,15 @@ async function ContentSideBar() {
     pageSize: 25,
   });
 
-  const personIds = result.users.map((person) => person._id);
-
-  //tests
-  for (const personId of personIds) {
-    const chat = await fetchChatViaUserId(userInfo._id, personId);
-
-    console.log(`Chat found with personId: ${personId}, chatId: ${chat._id}`);
-  }
+  const chatData = await Promise.all(
+    result.users.map(async (person) => {
+      const chat = await fetchChatViaUserId(userInfo._id, person._id);
+      return {
+        person,
+        chat,
+      };
+    })
+  );
 
   return (
     <section className="contentsidebar custom-scrollbar p-4">
@@ -46,17 +47,16 @@ async function ContentSideBar() {
           <p className="no-result">No User</p>
         ) : (
           <>
-            {result.users.map(async (person) => {
-              const chat = await fetchChatViaUserId(userInfo._id, person._id);
-              return (
+            {chatData.map(({ person, chat }) =>
+              chat ? (
                 <DirectMessageCard
                   key={person.id}
                   chatId={chat._id}
                   name={person.name}
                   imgUrl={person.image}
                 />
-              );
-            })}
+              ) : null
+            )}
           </>
         )}
       </div>

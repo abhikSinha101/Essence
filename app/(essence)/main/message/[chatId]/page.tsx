@@ -7,7 +7,12 @@ import { currentUser } from "@clerk/nextjs";
 import { notFound, redirect } from "next/navigation";
 
 import PostMessage from "@/components/messenger/PostMessage";
-import { fetchChatId, fetchChats } from "@/lib/actions/chat.action";
+import {
+  associateMessageWithChat,
+  fetchChatId,
+  fetchChats,
+} from "@/lib/actions/chat.action";
+import MessageList from "@/components/shared/MessageList";
 
 interface Props {
   params: {
@@ -35,15 +40,17 @@ const page = async ({ params }: Props) => {
 
   const chatPartnerId = userInfo._id.toString() === userId1 ? userId2 : userId1;
   const chatPartner = await fetchUserById(chatPartnerId);
-  //console.log(chatPartner);
 
   return (
     <section className="flex flex-col h-full">
-      <div className="overflow-y-auto flex-1 custom-scrollbar_hidden">
-        {chatQuery._id}
-      </div>
+      <MessageList chatId={chatId} />
+
       <div className="my-2 bottom-10 bg-transparent">
-        <PostMessage />
+        <PostMessage
+          chatId={chatId}
+          senderId={userInfo._id}
+          receiverId={chatPartnerId}
+        />
       </div>
     </section>
   );

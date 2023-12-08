@@ -20,10 +20,17 @@ import { Send } from "lucide-react";
 import React from "react";
 
 import { usePathname, useRouter } from "next/navigation";
+import {
+  associateMessageWithChat,
+  createMessage,
+} from "@/lib/actions/chat.action";
 
-function PostMessage() {
-  const pathname = usePathname();
-
+interface params {
+  chatId: string;
+  senderId: string;
+  receiverId: string;
+}
+function PostMessage({ chatId, senderId, receiverId }: params) {
   const router = useRouter();
 
   React.useEffect(() => {
@@ -45,41 +52,47 @@ function PostMessage() {
   });
 
   const onSubmit = async (values: z.infer<typeof MessageValidation>) => {
-    console.log("Message ", values.text);
-
+    console.log(values.text, chatId, senderId, receiverId);
     //messaging
+    const message = await createMessage(
+      chatId,
+      senderId,
+      receiverId,
+      values.text
+    );
+
+    await associateMessageWithChat(chatId, message._id);
+
     form.reset();
   };
 
   return (
-    <section>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full flex flex-row gap-2"
-        >
-          <FormField
-            control={form.control}
-            name="text"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl className="no-focus bg-glassmorphism_display text-dark-1">
-                  <Input
-                    type="message"
-                    placeholder="message"
-                    className="w-full"
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="flex bg-dark-2 hover:bg-dark-2">
-            <Send className="h-4 w-4" />
-          </Button>
-        </form>
-      </Form>
-    </section>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full flex flex-row gap-2"
+      >
+        <FormField
+          control={form.control}
+          name="text"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormControl className="no-focus bg-glassmorphism_display text-dark-1">
+                <Input
+                  type="message"
+                  placeholder="message"
+                  className="w-full"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <Button type="submit" className="flex bg-dark-2 hover:bg-dark-2">
+          <Send className="h-4 w-4" />
+        </Button>
+      </form>
+    </Form>
   );
 }
 

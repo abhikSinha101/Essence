@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
-import { inter, sf, roboto } from "@/app/fonts/fonts";
+import { sf, roboto, c } from "@/app/fonts/fonts";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import Topbar from "@/components/shared/Topbar";
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={roboto.className}>
           {/*<Topbar/>*/}
           <main className="flex flex-row">
             <LeftSidebar />

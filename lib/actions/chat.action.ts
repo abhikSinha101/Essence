@@ -1,6 +1,7 @@
 "use server";
 
 import Chat from "../models/chat.model";
+import Message from "../models/message.model";
 import { connectToDB } from "../mongoose";
 
 export async function generateChatId(userId1: string, userId2: string) {
@@ -52,10 +53,69 @@ export async function fetchChatViaUserId(userId: string, personId: string) {
   try {
     connectToDB();
 
-    const chat = await Chat.findOne({ participants: [userId, personId] });
+    const chat = await Chat.findOne({
+      participants: { $all: [userId, personId] },
+    });
 
     return chat;
   } catch (error: any) {
     throw new Error(`error fetching chats via id ${error.message}`);
+  }
+}
+
+//
+export async function createMessage(
+  chatId: string,
+  senderId: string,
+  receiverId: string,
+  text: string
+) {
+  try {
+    connectToDB();
+
+    const message = await Message.create({
+      id: chatId,
+      senderId,
+      receiverId,
+      text,
+    });
+
+    return message;
+  } catch (error: any) {
+    throw new Error(`error creating message ${error.message}`);
+  }
+}
+
+export async function associateMessageWithChat(
+  chatId: string,
+  messageId: string
+) {
+  try {
+    connectToDB();
+
+    const chat = await Chat.findById(chatId);
+
+    chat.messages.push(messageId);
+
+    await chat.save();
+  } catch (error: any) {
+    throw new Error(`error associating message ${error.message}`);
+  }
+}
+
+export async function fetchMessagesForChat(chatId: string) {
+  try {
+    const chat = await Chat.findById(chatId);
+
+    const messageIds = chat.messages;
+
+    const messages = await Message.find({
+      _id: { $in: messageIds },
+      id: chatId,
+    });
+
+    return messages;
+  } catch (error: any) {
+    throw new Error(`Error fetching messages for chat: ${error.message}`);
   }
 }
