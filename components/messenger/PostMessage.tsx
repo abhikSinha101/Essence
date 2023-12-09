@@ -24,6 +24,7 @@ import {
   associateMessageWithChat,
   createMessage,
 } from "@/lib/actions/chat.action";
+import { revalidatePath } from "next/cache";
 
 interface params {
   chatId: string;
@@ -32,6 +33,7 @@ interface params {
 }
 function PostMessage({ chatId, senderId, receiverId }: params) {
   const router = useRouter();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const enter = (e: KeyboardEvent) => {

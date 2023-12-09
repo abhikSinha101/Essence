@@ -40,10 +40,16 @@ const page = async ({ params }: Props) => {
 
   const chatPartnerId = userInfo._id.toString() === userId1 ? userId2 : userId1;
   const chatPartner = await fetchUserById(chatPartnerId);
+  const chatUser = await fetchUserById(userInfo._id);
 
   return (
     <section className="flex flex-col h-full">
-      <MessageList chatId={chatId} />
+      <MessageList
+        chatId={chatId}
+        senderId={userInfo._id}
+        chatPartner={chatPartner}
+        chatUser={chatUser}
+      />
 
       <div className="my-2 bottom-10 bg-transparent">
         <PostMessage

@@ -78,10 +78,10 @@ function Searchbar() {
         onClick={clickHandler}
       >
         <div className="flex items-center text-small-regular">
-          <Command className="pointer-events-none max-w-xs border rounded-lg shadow-sm bg-light-2 flex flex-row">
+          <Command className="pointer-events-none max-w-md border rounded-lg shadow-sm bg-light-2 flex flex-row">
             <CommandInput
               placeholder="Type a command or search..."
-              className="border-none"
+              className="border-none w-48"
             />
             <p className=" flex items-center p-3 text-gray-500 text-subtle-regular">
               <span>⌘</span>J
