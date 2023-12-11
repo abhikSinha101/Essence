@@ -13,6 +13,7 @@ import {
   fetchChats,
 } from "@/lib/actions/chat.action";
 import MessageList from "@/components/shared/MessageList";
+import Pusher from "pusher-js";
 
 interface Props {
   params: {

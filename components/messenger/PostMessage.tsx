@@ -25,6 +25,7 @@ import {
   createMessage,
 } from "@/lib/actions/chat.action";
 import { revalidatePath } from "next/cache";
+import Pusher from "pusher-js";
 
 interface params {
   chatId: string;
@@ -54,7 +55,7 @@ function PostMessage({ chatId, senderId, receiverId }: params) {
   });
 
   const onSubmit = async (values: z.infer<typeof MessageValidation>) => {
-    console.log(values.text, chatId, senderId, receiverId);
+    console.log("submitingMessage:", values.text, chatId, senderId, receiverId);
     //messaging
     const message = await createMessage(
       chatId,
@@ -66,6 +67,7 @@ function PostMessage({ chatId, senderId, receiverId }: params) {
     await associateMessageWithChat(chatId, message._id);
 
     form.reset();
+    console.log("Message submitted successfully");
   };
 
   return (

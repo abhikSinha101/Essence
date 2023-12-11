@@ -80,6 +80,22 @@ export async function createMessage(
       text,
     });
 
+    const Pusher = require("pusher");
+    const pusher = new Pusher({
+      appId: process.env.PUSHER_APP_KEY as string,
+      key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
+      secret: process.env.PUSHER_APP_SECRET as string,
+      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER as string,
+      useTLS: true,
+    });
+
+    pusher.trigger("my-channel", "my-event", {
+      message: chatId,
+      senderId,
+      receiverId,
+      text,
+    });
+
     return message;
   } catch (error: any) {
     throw new Error(`error creating message ${error.message}`);
