@@ -67,7 +67,6 @@ function PostMessage({ chatId, senderId, receiverId }: params) {
     await associateMessageWithChat(chatId, message._id);
 
     form.reset();
-    console.log("Message submitted successfully");
   };
 
   return (

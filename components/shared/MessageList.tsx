@@ -40,8 +40,6 @@ function MessageList({ chatId, senderId, chatPartner, chatUser }: params) {
     const channel = pusher.subscribe(`my-channel`);
 
     channel.bind("my-event", (data: any) => {
-      console.log(data);
-
       setMessages((prevMessages) => [data, ...prevMessages]);
     });
 
@@ -51,20 +49,18 @@ function MessageList({ chatId, senderId, chatPartner, chatUser }: params) {
     };
   }, [chatId]);
 
-  console.log(messages);
-
   return (
-    <section className="overflow-y-auto flex-1 flex flex-col-reverse custom-scrollbar_hidden">
+    <section className="overflow-y-auto h-full flex-1 flex flex-col-reverse custom-scrollbar_hidden">
       {messages.map((message) => (
         <div key={message._id}>
           {message.senderId === senderId ? (
             <div className="flex flex-row items-start justify-end  p-1">
-              <div className="flex max-w-sm flex-col bg-blue_text p-2 rounded-lg ">
+              <div className="flex max-w-xs flex-col bg-blue_text p-2 rounded-lg ">
                 <div className="text-base-regular whitespace-normal">
                   {message.text}
                 </div>
               </div>
-              <div className="h-8 w-8 ml-2 mt-1">
+              <div className="h-8 w-8 ml-2 mt-1 flex-shrink-0">
                 <Image
                   src={chatUser.image}
                   alt="profile photo"
@@ -76,7 +72,7 @@ function MessageList({ chatId, senderId, chatPartner, chatUser }: params) {
             </div>
           ) : (
             <div className="flex flex-row items-start justify-start p-1">
-              <div className="h-8 w-8 mr-2 mt-1">
+              <div className="h-8 w-8 mr-2 mt-1 flex-shrink-0">
                 <Image
                   src={chatPartner.image}
                   alt="profile photo"
@@ -85,7 +81,7 @@ function MessageList({ chatId, senderId, chatPartner, chatUser }: params) {
                   className="rounded-full"
                 />
               </div>
-              <div className="flex flex-col  max-w-sm  bg-purple_text p-2 rounded-lg ">
+              <div className="flex flex-col  max-w-xs  bg-purple_text p-2 rounded-lg ">
                 <div className="text-base-regular  whitespace-normal">
                   {message.text}
                 </div>

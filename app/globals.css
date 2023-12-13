@@ -5,7 +5,7 @@
 @layer components {
   /* main */
   .main-container {
-    @apply flex w-full  flex-col m-2 px-4 custom-scrollbar_hidden rounded-3xl border border-light-3 items-center bg-light-1 max-md:pb-32;
+    @apply flex w-full  flex-col m-2 px-4 custom-scrollbar_hidden rounded-3xl border border-light-3 items-center bg-light-1 max-md:h-full;
   }
 
   .hero_page {
@@ -76,11 +76,11 @@
   }
 
   .topbar {
-    @apply top-0 z-20 flex pl-4 h-16 w-[100%] items-center rounded-lg justify-between bg-glassmorphism max-lg:hidden;
+    @apply top-0 z-20 flex pl-4 h-16 w-[100%] items-center rounded-lg justify-between bg-glassmorphism max-md:hidden;
   }
 
   .bottombar {
-    @apply fixed bottom-0 z-10 w-full bg-light-1 p-4 border-t border-t-light-3 xs:px-7 md:hidden;
+    @apply fixed bottom-0 z-10 w-full bg-light-1 p-2 border-t border-t-light-3 xs:px-7 md:hidden;
   }
 
   .bottombar_container {

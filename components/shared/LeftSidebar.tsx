@@ -1,5 +1,4 @@
 "use client";
-import { inter } from "@/app/fonts/fonts";
 import { sidebarMediaLinks, sidebarDocLinks } from "@/constants";
 
 import {

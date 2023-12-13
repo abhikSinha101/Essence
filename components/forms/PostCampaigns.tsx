@@ -46,14 +46,14 @@ function PostCampaigns({ userId }: { userId: string }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className=" mt-4 flex flex-col justify-start gap-10"
+        className=" mt-4 flex flex-col justify-start gap-10 "
       >
         <FormField
           control={form.control}
           name="campaign"
           render={({ field }) => (
             <FormItem className="flex flex-col w-full gap-2">
-              <FormLabel className="text-base-semibold text-dark-2">
+              <FormLabel className="text-base-semibold text-dark-1">
                 Write a campaign.
               </FormLabel>
               <FormControl className="no-focus border boreder-dark-2 bg-light-2 text-dark-1">
@@ -63,7 +63,7 @@ function PostCampaigns({ userId }: { userId: string }) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-btn-color hover:bg-red-600">
+        <Button type="submit" className=" bg-btn-color hover:bg-red-600">
           Post Campaign
         </Button>
       </form>

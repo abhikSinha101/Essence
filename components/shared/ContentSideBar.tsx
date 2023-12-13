@@ -1,5 +1,3 @@
-import { inter } from "@/app/fonts/fonts";
-
 import { currentUser } from "@clerk/nextjs";
 
 import ContentSideBarMenu from "./ContentSideBarMenu";

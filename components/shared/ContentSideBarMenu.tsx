@@ -13,7 +13,7 @@ function ContentSideBarMenu() {
   const pathname = usePathname();
   return (
     <section>
-      <div className="flex items-center p-1 max-lg:hidden place-content-center">
+      <div className="flex items-center p-1 max-md:hidden place-content-center">
         <Button
           type="submit"
           className="flex flex-row gap-2 items-center bg-zinc-900 hover:bg-dark-2 "
@@ -53,14 +53,12 @@ function ContentSideBarMenu() {
                 width={24}
                 height={24}
               />
-              <p className="text-dark-1 max-lg:hidden">{link.label}</p>
+              <p className="text-dark-1">{link.label}</p>
             </Link>
           );
         })}
 
         <p className="leftsidebar_section-text">Direct Messages</p>
-
-        {/**Here we want to make direct message to the people with their userCard thing*/}
       </div>
     </section>
   );

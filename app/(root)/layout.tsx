@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { inter, sf, roboto } from "../fonts/fonts";
+import { sf, roboto } from "../fonts/fonts";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={roboto.className}>
           <section className="flex flex-col w-full">{children}</section>
         </body>
       </html>
