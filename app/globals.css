@@ -56,7 +56,13 @@
 
   /* User card */
   .user-card {
-    @apply flex flex-col justify-between gap-2 max-xs:rounded-xl max-xs:bg-dark-3 max-xs:p-4 xs:flex-row xs:items-center;
+    @apply flex flex-col justify-between gap-2 max-xs:rounded-xl max-xs:bg-light-2 max-xs:p-4 xs:flex-row xs:items-center;
+  }
+  .user-card-nav {
+    @apply flex flex-row justify-between gap-2 max-xs:rounded-xl;
+  }
+  .user-card_avatar-nav {
+    @apply flex items-start justify-start gap-3 xs:items-center;
   }
 
   .user-card_avatar {

@@ -7,57 +7,65 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@clerk/nextjs";
 
 const HeaderBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { userId } = useAuth();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const delayedToggleMenu = () => {
     setTimeout(() => {
-      toggleMenu();
+      setIsMenuOpen(!isMenuOpen);
     }, 250);
   };
 
+  const navAnimation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 2 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.2, ease: "easeOut" },
+  };
+
   return (
-    <AnimatePresence mode="wait">
-      <div className="flex justify-between w-full h-10 mt-4 rounded-md px-2 items-center">
-        <div className="flex items-center max-md:hidden">
-          <p>welcome to essence.</p>
-        </div>
-        <div className="items-center hidden max-md:flex">
-          <Image
-            src="/assets/Essence.svg"
-            alt="essencelogo"
-            width={112}
-            height={112}
-            className="p-1"
-            priority
-          />
-        </div>
+    <div className="flex justify-between w-full h-10 mt-4 rounded-md px-2 items-center">
+      <div className="flex items-center max-md:hidden">
+        <p>welcome to essence.</p>
+      </div>
+      <div className="items-center hidden max-md:flex">
+        <Image
+          src="/assets/Essence.svg"
+          alt="essencelogo"
+          width={112}
+          height={112}
+          className="p-1"
+          priority
+        />
+      </div>
 
-        <div className="flex flex-row items-center justify-between rounded-lg border border-light-3 max-md:hidden">
-          <ListFilter className="h-8 w-8 mx-2 " />
-          <p className="flex w-full h-full text-base-medium">Filters</p>
-        </div>
-
+      <div className="flex flex-row items-center justify-between rounded-lg border border-light-3 max-md:hidden">
+        <ListFilter className="h-8 w-8 mx-2 " />
+        <p className="flex w-full h-full text-base-medium">Filters</p>
+      </div>
+      <AnimatePresence mode="wait">
         {isMenuOpen && (
-          <motion.div className="hidden z-20 max-md:bg-glassmorphism backdrop-blur-lg fixed top-0 left-0 h-full w-full justify-center max-md:flex">
+          <motion.div
+            {...navAnimation}
+            className="hidden z-20 max-md:bg-glassmorphism backdrop-blur-lg fixed top-0 left-0 h-full w-full justify-center max-md:flex"
+          >
             <div className="flex flex-col gap-4 items-center my-32">
               <Image
                 src="/assets/Essence.svg"
                 alt="essencelogo"
-                width={112}
-                height={112}
+                width={128}
+                height={128}
                 className="p-1 mb-2"
                 priority
               />
 
               <Link
                 href="/main"
-                className="flex w-full p-2"
+                className="flex w-full p-2 "
                 onClick={delayedToggleMenu}
               >
                 <p className="w-full text-center  text-black">Dashboard</p>
@@ -84,18 +92,18 @@ const HeaderBar = () => {
                 <p className="w-full text-center  text-black">Messages</p>
               </Link>
               <Link
-                href="/main"
-                className="flex w-full p-2"
-                onClick={delayedToggleMenu}
-              >
-                <p className="w-full text-center  text-black">Profile</p>
-              </Link>
-              <Link
                 href="/main/archive"
                 className="flex w-full p-2"
                 onClick={delayedToggleMenu}
               >
                 <p className="w-full text-center  text-black">Archive</p>
+              </Link>
+              <Link
+                href={`/profile/${userId}`}
+                className="flex w-full p-2"
+                onClick={delayedToggleMenu}
+              >
+                <p className="w-full text-center  text-black">Profile</p>
               </Link>
             </div>
 
@@ -107,16 +115,16 @@ const HeaderBar = () => {
             </Button>
           </motion.div>
         )}
-        <div className="hidden max-md:flex flex-row items-center">
-          <Button
-            className="bg-transparent hover:bg-transparent"
-            onClick={toggleMenu}
-          >
-            <Menu color="#000000" />
-          </Button>
-        </div>
+      </AnimatePresence>
+      <div className="hidden max-md:flex flex-row items-center">
+        <Button
+          className="bg-transparent hover:bg-transparent"
+          onClick={delayedToggleMenu}
+        >
+          <Menu color="#000000" />
+        </Button>
       </div>
-    </AnimatePresence>
+    </div>
   );
 };
 

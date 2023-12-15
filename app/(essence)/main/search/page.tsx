@@ -26,7 +26,7 @@ async function Page() {
 
   return (
     <section>
-      <h1 className="head-text mt-10">search</h1>
+      <h1 className="mt-4 text-body-semibold">search</h1>
       {/**search bar */}
 
       <div className="mt-14 flex flex-col gap-9">
