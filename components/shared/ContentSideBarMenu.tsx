@@ -13,10 +13,10 @@ function ContentSideBarMenu() {
   const pathname = usePathname();
   return (
     <section>
-      <div className="flex items-center p-1 max-md:hidden place-content-center">
+      <div className="flex p-1 max-md:hidden place-content-start">
         <Button
           type="submit"
-          className="flex flex-row gap-2 items-center bg-zinc-900 hover:bg-dark-2 "
+          className="flex flex-row gap-2 items-center bg-zinc-900 hover:bg-dark-2"
         >
           <Image
             src="/assets/pen.png"
@@ -24,10 +24,9 @@ function ContentSideBarMenu() {
             width={20}
             height={20}
             priority
+            className="flex"
           />
-          <p className="flex flex-1 items-center justify-center text-center text-small-regular w-full">
-            New Message
-          </p>
+          <p className="flex text-center text-small-regular">New Message</p>
         </Button>
       </div>
 

@@ -13,7 +13,8 @@ import {
   fetchChats,
 } from "@/lib/actions/chat.action";
 import MessageList from "@/components/shared/MessageList";
-import Pusher from "pusher-js";
+import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   params: {
@@ -43,8 +44,15 @@ const page = async ({ params }: Props) => {
   const chatPartner = await fetchUserById(chatPartnerId);
   const chatUser = await fetchUserById(userInfo._id);
 
+  const currentDate = new Date();
+  const formattedDate = format(currentDate, "EEEE, d MMMM yyyy");
+
   return (
-    <section className="flex flex-col h-full">
+    <section className="relative flex flex-col h-full">
+      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 rounded-2xl w-60 h-6 text-black text-center backdrop-blur-sm bg-calender">
+        {formattedDate}
+      </div>
+
       <MessageList
         chatId={chatId}
         senderId={userInfo._id}

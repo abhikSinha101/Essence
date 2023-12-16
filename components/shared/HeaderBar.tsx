@@ -30,7 +30,7 @@ const HeaderBar = () => {
   return (
     <div className="flex justify-between w-full h-10 mt-4 rounded-md px-2 items-center">
       <div className="flex items-center max-md:hidden">
-        <p>welcome to essence.</p>
+        <p>Я лучший.</p>
       </div>
       <div className="items-center hidden max-md:flex">
         <Image

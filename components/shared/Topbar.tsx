@@ -1,12 +1,13 @@
 import React from "react";
 
 import Searchbar from "./Searchbar";
-import Location from "./Location";
 
 function Topbar() {
   return (
     <nav className="topbar">
-      <Location />
+      <p className="capitalize text-dark-1 text-body-normal text-center max-xs:hidden">
+        Inbox
+      </p>
       <Searchbar />
     </nav>
   );

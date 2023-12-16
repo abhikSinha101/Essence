@@ -108,10 +108,6 @@ function LeftSidebar() {
             </Link>
           );
         })}
-
-        <div className="text-dark-3 text-base-regular  max-lg:hidden pt-2 pb-2">
-          Add more Favorites
-        </div>
       </div>
 
       <div className="leftsidebar_profile">
@@ -134,19 +130,17 @@ function LeftSidebar() {
           </div>
         </div>
 
-        <Link href="">
+        <div>
           <Image
             src="/assets/moon.svg"
             alt="theme icon"
             width={24}
             height={24}
           />
-        </Link>
+        </div>
       </div>
     </section>
   );
 }
 
 export default LeftSidebar;
-
-//TODO figure were to put the profile page

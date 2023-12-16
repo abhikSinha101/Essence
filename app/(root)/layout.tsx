@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { sf, roboto } from "../fonts/fonts";
 import { ClerkProvider } from "@clerk/nextjs";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Essence",

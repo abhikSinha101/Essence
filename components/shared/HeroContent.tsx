@@ -1,4 +1,8 @@
 function HeroContent() {
-  return <h1>HEOCON</h1>;
+  return (
+    <section className="">
+      <h1>HEOCON</h1>
+    </section>
+  );
 }
 export default HeroContent;

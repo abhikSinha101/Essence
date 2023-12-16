@@ -4,8 +4,8 @@ import React from "react";
 
 function HeroTopbar() {
   return (
-    <nav className="topbar">
-      <div className="flex items-center p-4 max-lg:hidden place-content-center h-full">
+    <nav className="topbar backdrop-blur-sm">
+      <div className="flex items-center p-4 max-lg:hidden place-content-center h-full ">
         <Link href="/main">
           <Image
             src="./assets/menu.svg"
