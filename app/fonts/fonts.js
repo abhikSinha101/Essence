@@ -13,3 +13,8 @@ export const sf = localFont({
   src: "../fonts/SF/SF-Pro-Text-Heavy.otf",
   display: "swap",
 });
+
+export const eubergine = localFont({
+  src: "../fonts/eubergine/free/Eubergine-Font.ttf",
+  display: "swap",
+});

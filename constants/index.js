@@ -76,3 +76,81 @@ export const communityTabs = [
   { value: "members", label: "Members", icon: "/assets/community.svg" },
   { value: "requests", label: "Requests", icon: "/assets/request.svg" },
 ];
+
+export const footerLinks = [
+  {
+    label: "Terms of Service",
+    route: "/terms",
+  },
+  {
+    label: "Privacy Policy",
+    route: "/privacy",
+  },
+  {
+    label: "Blog",
+    route: "/blog",
+  },
+  {
+    label: "Careers",
+    route: "/careers",
+  },
+];
+
+export const socialMediaLinks = [
+  {
+    label: "Facebook",
+    icon: "/assets/facebook-icon.svg",
+    link: "https://www.facebook.com/yourpage",
+  },
+  {
+    label: "Twitter",
+    icon: "/assets/twitter-icon.svg",
+    link: "https://www.twitter.com/yourhandle",
+  },
+  {
+    label: "Instagram",
+    icon: "/assets/instagram-icon.svg",
+    link: "https://www.instagram.com/yourhandle",
+  },
+  {
+    label: "LinkedIn",
+    icon: "/assets/linkedin-icon.svg",
+    link: "https://www.linkedin.com/company/yourcompany",
+  },
+];
+
+export const additionalLinks = [
+  {
+    label: "FAQ",
+    route: "/faq",
+  },
+  {
+    label: "Support",
+    route: "/support",
+  },
+  {
+    label: "Partnerships",
+    route: "/partners",
+  },
+  {
+    label: "Investors",
+    route: "/investors",
+  },
+];
+
+export const footer = {
+  company: {
+    name: "Your Company",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  },
+  address: {
+    street: "123 Main Street",
+    city: "Cityville",
+    country: "Countryland",
+    zip: "12345",
+  },
+  contact: {
+    email: "info@yourcompany.com",
+    phone: "+123 456 7890",
+  },
+};

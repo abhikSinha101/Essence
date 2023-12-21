@@ -9,11 +9,11 @@
   }
 
   .hero_page {
-    @apply absolute px-24 w-full flex flex-col gap-20 z-30 max-h-full overflow-y-auto;
+    @apply absolute  w-full flex flex-col gap-20 z-30 max-h-full overflow-y-auto;
   }
 
   .hero_card {
-    @apply rounded-lg flex flex-row p-8 w-full items-center gap-16 justify-between backdrop-blur-sm bg-glassmorphism_display;
+    @apply rounded-lg flex flex-row p-8 w-full items-center gap-16 mb-8 justify-between backdrop-blur-sm bg-glassmorphism_display;
   }
 
   .canvas-container {
@@ -82,7 +82,7 @@
   }
 
   .topbar {
-    @apply top-0 z-20 flex pl-4 h-16 w-[100%] items-center rounded-lg justify-between  bg-glassmorphism max-md:hidden;
+    @apply top-0 mt-6 z-20 flex pl-4 h-16 w-[100%]  items-center rounded-lg justify-between  bg-glassmorphism;
   }
 
   .bottombar {
