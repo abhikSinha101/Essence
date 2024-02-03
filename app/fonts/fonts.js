@@ -18,3 +18,9 @@ export const eubergine = localFont({
   src: "../fonts/eubergine/free/Eubergine-Font.ttf",
   display: "swap",
 });
+
+export const bonSignatur = localFont({
+  src: "../fonts/bon/Bonista-Signature.otf",
+
+  display: "swap",
+});

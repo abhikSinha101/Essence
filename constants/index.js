@@ -138,19 +138,7 @@ export const additionalLinks = [
   },
 ];
 
-export const footer = {
-  company: {
-    name: "Your Company",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  address: {
-    street: "123 Main Street",
-    city: "Cityville",
-    country: "Countryland",
-    zip: "12345",
-  },
-  contact: {
-    email: "info@yourcompany.com",
-    phone: "+123 456 7890",
-  },
-};
+export const footer = [
+  { link: "info@yourcompany.com" },
+  { link: "+123 456 7890" },
+];

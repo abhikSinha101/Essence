@@ -174,9 +174,18 @@ module.exports = {
     },
 
     extend: {
+      backdropBlur: {
+        lg: "30px",
+      },
       height: {
         112: "28rem",
         128: "32rem",
+        144: "36rem",
+      },
+      width: {
+        112: "28rem",
+        128: "32rem",
+        144: "36rem",
       },
       colors: {
         "primary-500": "#877EFF",
@@ -192,6 +201,7 @@ module.exports = {
         "light-3": "#B3B3B3",
         "gray-1": "#C5C5C5",
         "btn-color": "#EB455F",
+        "btn-color_blue": "#89CFF0",
         yellow_text: "#F5EFDA",
         purple_text: "#E8DAF5",
         blue_text: "#DAE3F5",
@@ -203,7 +213,9 @@ module.exports = {
 
         glassmorphism: "rgba(255, 255, 255,0.25)",
         glassmorphism_display: "rgba(255, 255, 255,0.35)",
-        calender: "rgba(232,236,242,0.3);",
+        calender: "rgba(232,236,242,0.3)",
+        nav: "rgba(70, 80, 90, 0.35)",
+        nav_icon: "rgba(240,240,240,0.8)",
       },
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
